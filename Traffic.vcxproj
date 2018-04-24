@@ -151,10 +151,8 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="CreationRoad.h" />
-    <ClInclude Include="Crossing.h" />
     <ClInclude Include="DestroyerRoad.h" />
     <ClInclude Include="Event.h" />
-    <ClInclude Include="Highway.h" />
     <ClInclude Include="Road.h" />
     <ClInclude Include="Semaphore.h" />
     <ClInclude Include="stdafx.h" />
@@ -166,10 +164,8 @@
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Clock.cpp" />
     <ClCompile Include="CreationRoad.cpp" />
-    <ClCompile Include="Crossing.cpp" />
     <ClCompile Include="DestroyerRoad.cpp" />
     <ClCompile Include="Event.cpp" />
-    <ClCompile Include="Highway.cpp" />
     <ClCompile Include="Road.cpp" />
     <ClCompile Include="Semaphore.cpp" />
     <ClCompile Include="stdafx.cpp">

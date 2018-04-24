@@ -48,12 +48,6 @@
     <ClInclude Include="DestroyerRoad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Crossing.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Highway.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -87,12 +81,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DestroyerRoad.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Crossing.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Highway.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

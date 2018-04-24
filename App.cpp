@@ -8,10 +8,6 @@ App::App() : userIO(new UserIO())
    clock = new Clock(userIO->getExecTime());
 
    const auto semaphoreTime = userIO->getSemaphoreTime();
-
-   crossing1 = new Crossing(semaphoreTime);
-   crossing2 = new Crossing(semaphoreTime);
-
 }
 
 
