@@ -7,6 +7,8 @@
 #include <functional>
 #include "Clock.h"
 #include "UserIO.h"
+#include <list>
+#include "Road.h"
 
 class App
 {
@@ -15,7 +17,7 @@ class App
    Clock* clock;
    UserIO* userIO;
 
-
+   std::list<Road*> roads;
 public:
    App();
    ~App();

@@ -12,22 +12,24 @@ class Car;
 class Road
 {
 protected:
-   double velocity;
    double length;
-
-   std::queue<Car*> cars;
+   double velocity;
 
    Semaphore* semaphore;
 
+   std::queue<Car*> cars;   
    std::list<Road*> connectedRoads;
 
    std::function<void(std::string description)> addEvent;
 
 public:
-   Road(const double _vel, const double _length) : velocity(_vel), length(_length) {}
+   Road(const double _length, const double _vel, const double timer) : length(_length), velocity(_vel), semaphore(new Semaphore(timer)) {}
+
    virtual ~Road() { delete semaphore; }
 
    void connectAddEvent(const std::function<void(std::string)> _addEvent) { addEvent = _addEvent; }
+
+   void connectRoad(Road* road);
 };
 
 #endif

@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "App.h"
 #include <iostream>
+#include "DestroyerRoad.h"
+#include "CreationRoad.h"
 
 
 App::App() : userIO(new UserIO())
@@ -8,11 +10,81 @@ App::App() : userIO(new UserIO())
    clock = new Clock(userIO->getExecTime());
 
    const auto semaphoreTime = userIO->getSemaphoreTime();
+
+   const auto o1west = new DestroyerRoad(80, 2000, semaphoreTime);
+   const auto o1east = new CreationRoad(80, 2000, semaphoreTime, 10);
+   roads.push_back(o1west);
+   roads.push_back(o1east);
+
+   const auto s1south = new DestroyerRoad(60, 500, semaphoreTime);
+   const auto s1north = new CreationRoad(60, 500, semaphoreTime, 30);
+   roads.push_back(s1north);
+   roads.push_back(s1south);
+
+   const auto s2south = new DestroyerRoad(40, 500, semaphoreTime);
+   const auto s2north = new CreationRoad(40, 500, semaphoreTime, 60);
+   roads.push_back(s2south);
+   roads.push_back(s2north);
+
+   const auto l1east = new DestroyerRoad(30, 400, semaphoreTime);
+   const auto l1west = new CreationRoad(30, 400, semaphoreTime, 10);
+   roads.push_back(l1east);
+   roads.push_back(l1west);
+
+   const auto n2south = new DestroyerRoad(40, 500, semaphoreTime);
+   const auto n2north = new CreationRoad(40, 500, semaphoreTime, 20);
+   roads.push_back(n2north);
+   roads.push_back(n2south);
+
+   const auto n1north = new DestroyerRoad(60, 500, semaphoreTime);
+   const auto n1south = new CreationRoad(60, 500, semaphoreTime, 20);
+   roads.push_back(n1north);
+   roads.push_back(n1south);
+
+   const auto c1west = new Road(60, 300, semaphoreTime);
+   const auto c1east = new Road(60, 300, semaphoreTime);
+   roads.push_back(c1west);
+   roads.push_back(c1east);
+
+   ////// CONNECTING ROADS //////
+
+   o1east->connectRoad(s1south);
+   o1east->connectRoad(c1east);
+   o1east->connectRoad(n1north);
+
+   s1north->connectRoad(c1east);
+   s1north->connectRoad(n1north);
+   s1north->connectRoad(o1west);
+
+   s2north->connectRoad(l1east);
+   s2north->connectRoad(n2south);
+   s2north->connectRoad(c1west);
+
+   l1west->connectRoad(n2south);
+   l1west->connectRoad(c1west);
+   l1west->connectRoad(s2south);
+
+   n2south->connectRoad(c1west);
+   n2south->connectRoad(s2south);
+   n2south->connectRoad(l1east);
+
+   n1south->connectRoad(o1west);
+   n1south->connectRoad(s1south);
+   n1south->connectRoad(c1east);
+
+   c1west->connectRoad(n1north);
+   c1west->connectRoad(o1west);
+   c1west->connectRoad(s1south);
+
+   c1east->connectRoad(s2south);
+   c1east->connectRoad(l1east);
+   c1east->connectRoad(n2north);
 }
 
 
 App::~App()
 {
+   roads.clear();
    delete clock;
    delete userIO;
 }

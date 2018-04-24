@@ -13,7 +13,13 @@ class CreationRoad : public Road
 public:
    ~CreationRoad() = default;
 
-   CreationRoad(const int _vel, const int _length, const double semaphoreTimer, const double _frequence) : Road(_vel, _length), frequence(_frequence) {}  
+   CreationRoad(
+      const int _vel,
+      const int _length,
+      const double semaphoreTimer,
+      const double _frequence) :
+      Road(_vel, _length, semaphoreTimer), frequence(_frequence)
+   {}  
    
    
 };

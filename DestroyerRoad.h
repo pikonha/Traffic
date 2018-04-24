@@ -10,7 +10,7 @@ class DestroyerRoad : public Road
 
 public:
    ~DestroyerRoad() = default;
-   DestroyerRoad(const int _vel, const int _length, const double semaphoreTimer, const double _frequence) : Road(_vel, _length) {}  
+   DestroyerRoad(const int _vel, const int _length, const double semaphoreTimer) : Road(_vel, _length, semaphoreTimer) {}  
 
 };
 
