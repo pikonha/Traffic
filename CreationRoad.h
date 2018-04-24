@@ -9,6 +9,7 @@ class CreationRoad : public Road
    double frequence;
 
    void createCar();
+
 public:
    ~CreationRoad() = default;
 

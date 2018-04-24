@@ -7,6 +7,7 @@
 #include <functional>
 #include "Clock.h"
 #include "UserIO.h"
+#include "Crossing.h"
 
 class App
 {
@@ -14,6 +15,10 @@ class App
 
    Clock* clock;
    UserIO* userIO;
+
+   Crossing* crossing1;
+   Crossing* crossing2;
+
 public:
    App();
    ~App();

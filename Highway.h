@@ -12,7 +12,7 @@ class Highway
 
    Semaphore* semaphore;
 public:
-   Highway(const double semaphoreTimer);
+   Highway(const double vel1, const double lenght1, const double vel2, const double lenght2, const double semaphoreTimer);
    ~Highway();
 };
 

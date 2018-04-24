@@ -10,17 +10,16 @@ class Car;
 class Road
 {
 protected:
-   int velocity;
-   int length;
+   double velocity;
+   double length;
 
    std::queue<Car*> cars;
-
 
    std::function<void(std::string description)> addEvent;
 
 public:
-   Road(const int _vel, const int _length);
-   virtual ~Road();
+   Road(const double _vel, const double _length) : velocity(_vel), length(_length) {}
+   virtual ~Road() = default;
 
    void connectAddEvent(const std::function<void(std::string)> _addEvent) { addEvent = _addEvent; }
 };

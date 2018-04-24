@@ -1,2 +1,4 @@
-﻿  DestroyerRoad.cpp
+﻿  Clock.cpp
+c:\users\lucas.picollo\documents\projects\traffic\clock.cpp(11): warning C4244: '=': conversion from 'double' to 'time_t', possible loss of data
+c:\users\lucas.picollo\documents\projects\traffic\clock.cpp(24): warning C4244: 'argument': conversion from 'const double' to 'time_t', possible loss of data
   Traffic.vcxproj -> C:\Users\lucas.picollo\Documents\Projects\Traffic\x64\Debug\Traffic.exe

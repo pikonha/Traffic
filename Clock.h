@@ -3,25 +3,29 @@
 
 #pragma once
 #include <string>
+#include <chrono>
+#include <functional>
+
 
 class Clock
 {
+   time_t limit;
+   time_t startTime;
    time_t currentTime;
 
-   long startTime;
-   long execTime;
+   std::function<void()> notifyAll;
+
 public:
-   Clock(const long _execTime);
+   Clock(const double _execTime);
    ~Clock() {}
 
-   void startClock() const;
+   void startClock();
 
-   std::string getTimeFormated() const;
-
-   time_t getCurrentTime() const { return currentTime; }
+   std::string getCurrentTimeFormated();
 
    void oneSec(time_t passed) const;
 
+   void connectNotify(std::function<void()> _notify) { notifyAll = _notify; }
 };
 
 #endif
