@@ -5,8 +5,7 @@
 
 enum State
 {
-   OPEN,
-   CLOSED
+   GREEN, RED
 };
 
 class Semaphore
@@ -16,7 +15,7 @@ class Semaphore
 
 public:
    ~Semaphore() {}
-   Semaphore(const double _timer) : state(CLOSED), timer(_timer) {}
+   Semaphore(const double _timer) : state(RED), timer(_timer) {}
 
    void changeState(const State _state) { state = _state; }
    

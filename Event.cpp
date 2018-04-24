@@ -2,7 +2,7 @@
 #include "Event.h"
 
 
-Event::Event(int _time, std::string _description)
+Event::Event(time_t _time, std::string _description)
 {
 }
 

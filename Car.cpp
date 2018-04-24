@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "Car.h"
+#include <random>
 
-
-Car::Car(const int _length)
+Car::Car()
 {
+   length = rand() % 7 + 2;
 }
 
 

@@ -18,6 +18,8 @@ public:
 
    std::string getTimeFormated() const;
 
+   time_t getCurrentTime() const { return currentTime; }
+
    void oneSec(time_t passed) const;
 
 };

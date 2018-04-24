@@ -7,7 +7,7 @@ class Car
 {
    int length;
 public:
-   Car(const int _length);
+   Car();
    ~Car();
 };
 

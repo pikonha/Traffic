@@ -42,6 +42,18 @@
     <ClInclude Include="UserIO.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CreationRoad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DestroyerRoad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Crossing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Highway.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -69,6 +81,18 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="UserIO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CreationRoad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DestroyerRoad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Crossing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Highway.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -7,12 +7,15 @@
 
 class Event
 {
-   int time;
+   time_t time;
    std::string description;
 
 public:
-   Event(const int _time, const std::string _description);
+   Event(const time_t _time, const std::string _description);
    ~Event();
+
+   time_t getTime() const { return time; }
+   std::string getDescriptiom() const { return description; }
 };
 
 #endif
