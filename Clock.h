@@ -2,20 +2,23 @@
 #define INCLUDED_CLOCK_H
 
 #pragma once
-#include "Queue.h"
 #include <string>
-
-class Event;
 
 class Clock
 {
-   Queue<Event*> events;
+   time_t currentTime;
+
+   long startTime;
+   long execTime;
 public:
-   Clock();
-   ~Clock();
+   Clock(const long _execTime);
+   ~Clock() {}
 
    void startClock() const;
+
    std::string getTimeFormated() const;
+
+   void oneSec(time_t passed) const;
 
 };
 

@@ -2,7 +2,7 @@
 #include "Car.h"
 
 
-Car::Car()
+Car::Car(const int _length)
 {
 }
 

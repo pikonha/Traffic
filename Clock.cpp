@@ -1,20 +1,25 @@
 #include "stdafx.h"
 #include "Clock.h"
+#include <ctime>
 
-
-Clock::Clock()
+Clock::Clock(const long _execTime)
 {
+   time(&currentTime);
+   startTime = currentTime;
+
+   execTime = _execTime + startTime;
 }
 
-
-Clock::~Clock()
-{
-}
 
 void Clock::startClock() const
 {
+   while (currentTime <= execTime)
+   {
+      
+   }
 }
 
 std::string Clock::getTimeFormated() const
 {
+   return "";
 }

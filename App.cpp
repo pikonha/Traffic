@@ -10,3 +10,7 @@ App::App()
 App::~App()
 {
 }
+
+void App::notifyAll()
+{
+}

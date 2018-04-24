@@ -2,7 +2,8 @@
 #define INCLUDED_ROAD_H
 
 #pragma once
-#include "Queue.h"
+#include <queue>
+#include "Semaphore.h"
 
 class Car;
 
@@ -10,10 +11,11 @@ class Road
 {
    int velocity;
    int length;
-   Queue<Car*> cars;
+   std::queue<Car*> cars;
 
+   Semaphore* semaphore;
 public:
-   Road();
+   Road(const int _vel, const int _length, const double semaphoreTimer);
    ~Road();
 };
 

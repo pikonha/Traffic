@@ -6,9 +6,8 @@
 class Car
 {
    int length;
-   int roadOption;
 public:
-   Car();
+   Car(const int _length);
    ~Car();
 };
 
