@@ -1,6 +1,9 @@
 ﻿  App.cpp
+  Car.cpp
   CreationRoad.cpp
+c:\users\lucas.picollo\documents\projects\traffic\creationroad.cpp(7): error C2512: 'Car::Car': no appropriate default constructor available
   DestroyerRoad.cpp
   NeutralRoad.cpp
+  Road.cpp
+  Traffic.cpp
   Generating Code...
-  Traffic.vcxproj -> C:\Users\lucas.picollo\Documents\Projects\Traffic\x64\Debug\Traffic.exe

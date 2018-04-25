@@ -12,8 +12,8 @@ void App::createRoads(const int timer)
    roads.push_back(o1west);
    roads.push_back(o1east);
 
-   const auto s1south = new DestroyerRoad(60, 500, timer);
-   const auto s1north = new CreationRoad(60, 500, timer, 30);
+   const auto s1south = new DestroyerRoad(60, 500, timer+5);
+   const auto s1north = new CreationRoad(60, 500, timer+5, 30);
    roads.push_back(s1north);
    roads.push_back(s1south);
 
@@ -22,23 +22,23 @@ void App::createRoads(const int timer)
    roads.push_back(s2south);
    roads.push_back(s2north);
 
-   const auto l1east = new DestroyerRoad(30, 400, timer);
-   const auto l1west = new CreationRoad(30, 400, timer, 10);
+   const auto l1east = new DestroyerRoad(30, 400, timer+5);
+   const auto l1west = new CreationRoad(30, 400, timer+5, 10);
    roads.push_back(l1east);
    roads.push_back(l1west);
 
-   const auto n2south = new DestroyerRoad(40, 500, timer);
-   const auto n2north = new CreationRoad(40, 500, timer, 20);
+   const auto n2south = new DestroyerRoad(40, 500, timer+10);
+   const auto n2north = new CreationRoad(40, 500, timer+10, 20);
    roads.push_back(n2north);
    roads.push_back(n2south);
 
-   const auto n1north = new DestroyerRoad(60, 500, timer);
-   const auto n1south = new CreationRoad(60, 500, timer, 20);
+   const auto n1north = new DestroyerRoad(60, 500, timer+15);
+   const auto n1south = new CreationRoad(60, 500, timer+15, 20);
    roads.push_back(n1north);
    roads.push_back(n1south);
 
-   const auto c1west = new NeutralRoad(60, 300, timer);
-   const auto c1east = new NeutralRoad(60, 300, timer);
+   const auto c1west = new NeutralRoad(60, 300, timer+15);
+   const auto c1east = new NeutralRoad(60, 300, timer+15);
    roads.push_back(c1west);
    roads.push_back(c1east);
 
@@ -100,5 +100,5 @@ void App::notifyAll(const int time)
 
 void App::addEvent(const std::string description)
 {
-   events.push(new Event(clock->getCurrentTimeFormated(), description));
+   events.push_back(new Event(clock->getCurrentTimeFormated(), description));
 }

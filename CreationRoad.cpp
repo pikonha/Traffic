@@ -4,7 +4,7 @@
 
 void CreationRoad::createCar()
 {
-   cars.push(new Car());
+   cars.push(new Car(velocity));
 
    addEvent("New car created");
 }

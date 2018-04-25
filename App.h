@@ -3,7 +3,7 @@
 
 #pragma once
 #include "Event.h"
-#include <queue>
+#include <vector>
 #include <functional>
 #include "Clock.h"
 #include "UserIO.h"
@@ -12,7 +12,7 @@
 
 class App
 {
-   std::queue<Event*> events;
+   std::vector<Event*> events;
 
    Clock* clock;
    UserIO* userIO;

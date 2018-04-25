@@ -2,12 +2,13 @@
 #include "Car.h"
 #include <random>
 
-Car::Car()
+Car::Car(const int _speed) : speed(_speed)
 {
    length = rand() % 7 + 2;
+   walked = 0;
 }
 
-
-Car::~Car()
+void Car::move()
 {
+   walked += (speed / 3.6) * 300;
 }

@@ -12,8 +12,8 @@ class Car;
 class Road
 {
 protected:
-   double length;
-   double velocity;
+   int capacity;
+   int velocity;
 
    Semaphore* semaphore;
 
@@ -24,12 +24,14 @@ protected:
 
 public:
    virtual ~Road() { delete semaphore; }
-   Road(const double _length, const double _vel, const int timer) : length(_length), velocity(_vel), semaphore(new Semaphore(timer)) {}   
+   Road(const int _length, const int _vel, const int timer) : capacity(_length), velocity(_vel), semaphore(new Semaphore(timer)) {}
 
    void connectAddEvent(const std::function<void(std::string)> _addEvent) { addEvent = _addEvent; }
 
    void connectRoad(Road* road);
    
+   bool recieveCar(Car* car);
+
    virtual void getNotify(const int time) = 0;
 
 };
