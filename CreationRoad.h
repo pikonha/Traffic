@@ -6,22 +6,21 @@
 
 class CreationRoad : public Road
 {
-   double frequence;
+   int frequence;
 
    void createCar();
-
 public:
    ~CreationRoad() = default;
 
    CreationRoad(
       const int _vel,
       const int _length,
-      const double semaphoreTimer,
-      const double _frequence) :
+      const int semaphoreTimer,
+      const int _frequence) :
       Road(_vel, _length, semaphoreTimer), frequence(_frequence)
-   {}  
-   
-   
+   {}
+
+   void getNotify(const int time) override;
 };
 
 #endif

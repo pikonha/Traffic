@@ -1,23 +1,22 @@
-#ifndef INCLUDED_DESTROYERROAD_H
-#define INCLUDED_DESTROYERROAD_H
+#ifndef INCLUDED_NEUTRALROAD_H
+#define INCLUDED_NEUTRALROAD_H
 
 #pragma once
+
 #include "Road.h"
 
-class DestroyerRoad : public Road
+class NeutralRoad : public Road
 {
-   void deleteCar();
-
 public:
-   ~DestroyerRoad() = default;
-   DestroyerRoad(
-      const int _vel,
+   ~NeutralRoad() = default;
+   NeutralRoad(const int _vel,
       const int _length,
       const int semaphoreTimer) :
       Road(_vel, _length, semaphoreTimer)
    {}  
 
    void getNotify(const int time) override;
+
 };
 
 #endif

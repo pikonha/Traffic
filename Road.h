@@ -23,13 +23,15 @@ protected:
    std::function<void(std::string description)> addEvent;
 
 public:
-   Road(const double _length, const double _vel, const double timer) : length(_length), velocity(_vel), semaphore(new Semaphore(timer)) {}
-
    virtual ~Road() { delete semaphore; }
+   Road(const double _length, const double _vel, const int timer) : length(_length), velocity(_vel), semaphore(new Semaphore(timer)) {}   
 
    void connectAddEvent(const std::function<void(std::string)> _addEvent) { addEvent = _addEvent; }
 
    void connectRoad(Road* road);
+   
+   virtual void getNotify(const int time) = 0;
+
 };
 
 #endif

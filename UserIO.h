@@ -10,10 +10,11 @@ public:
    UserIO() {}
    ~UserIO() {}
 
+   void printEventPartition(const std::string time) const;
    void printEvent(const Event& event) const;
 
-   double getExecTime() const;
-   double getSemaphoreTime() const;
+   int getExecTime() const;
+   int getSemaphoreTime() const;
 };
 
 #endif

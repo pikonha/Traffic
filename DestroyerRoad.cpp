@@ -13,3 +13,9 @@ void DestroyerRoad::deleteCar()
    delete car;
 }
 
+void DestroyerRoad::getNotify(const int time)
+{
+   if (semaphore->getTimer() % time == 0)
+      semaphore->changeState();
+}
+

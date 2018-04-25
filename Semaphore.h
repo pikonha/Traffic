@@ -11,13 +11,14 @@ enum State
 class Semaphore
 {
    State state;
-   double timer;
+   int timer;
 
 public:
    ~Semaphore() {}
-   Semaphore(const double _timer) : state(RED), timer(_timer) {}
+   Semaphore(const int _timer) : state(RED), timer(_timer) {}
 
-   void changeState(const State _state) { state = _state; }
+   int getTimer() const { return timer; }
+   void changeState() { state == RED ? state = GREEN : state = RED; }
    
 };
 

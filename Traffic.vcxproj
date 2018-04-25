@@ -153,6 +153,7 @@
     <ClInclude Include="CreationRoad.h" />
     <ClInclude Include="DestroyerRoad.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="NeutralRoad.h" />
     <ClInclude Include="Road.h" />
     <ClInclude Include="Semaphore.h" />
     <ClInclude Include="stdafx.h" />
@@ -166,6 +167,7 @@
     <ClCompile Include="CreationRoad.cpp" />
     <ClCompile Include="DestroyerRoad.cpp" />
     <ClCompile Include="Event.cpp" />
+    <ClCompile Include="NeutralRoad.cpp" />
     <ClCompile Include="Road.cpp" />
     <ClCompile Include="Semaphore.cpp" />
     <ClCompile Include="stdafx.cpp">

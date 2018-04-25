@@ -3,50 +3,44 @@
 #include <iostream>
 #include "DestroyerRoad.h"
 #include "CreationRoad.h"
+#include "NeutralRoad.h"
 
-
-App::App() : userIO(new UserIO())
+void App::createRoads(const int timer)
 {
-   clock = new Clock(userIO->getExecTime());
-
-   const auto semaphoreTime = userIO->getSemaphoreTime();
-
-   const auto o1west = new DestroyerRoad(80, 2000, semaphoreTime);
-   const auto o1east = new CreationRoad(80, 2000, semaphoreTime, 10);
+   const auto o1west = new DestroyerRoad(80, 2000, timer);
+   const auto o1east = new CreationRoad(80, 2000, timer, 10);
    roads.push_back(o1west);
    roads.push_back(o1east);
 
-   const auto s1south = new DestroyerRoad(60, 500, semaphoreTime);
-   const auto s1north = new CreationRoad(60, 500, semaphoreTime, 30);
+   const auto s1south = new DestroyerRoad(60, 500, timer);
+   const auto s1north = new CreationRoad(60, 500, timer, 30);
    roads.push_back(s1north);
    roads.push_back(s1south);
 
-   const auto s2south = new DestroyerRoad(40, 500, semaphoreTime);
-   const auto s2north = new CreationRoad(40, 500, semaphoreTime, 60);
+   const auto s2south = new DestroyerRoad(40, 500, timer);
+   const auto s2north = new CreationRoad(40, 500, timer, 60);
    roads.push_back(s2south);
    roads.push_back(s2north);
 
-   const auto l1east = new DestroyerRoad(30, 400, semaphoreTime);
-   const auto l1west = new CreationRoad(30, 400, semaphoreTime, 10);
+   const auto l1east = new DestroyerRoad(30, 400, timer);
+   const auto l1west = new CreationRoad(30, 400, timer, 10);
    roads.push_back(l1east);
    roads.push_back(l1west);
 
-   const auto n2south = new DestroyerRoad(40, 500, semaphoreTime);
-   const auto n2north = new CreationRoad(40, 500, semaphoreTime, 20);
+   const auto n2south = new DestroyerRoad(40, 500, timer);
+   const auto n2north = new CreationRoad(40, 500, timer, 20);
    roads.push_back(n2north);
    roads.push_back(n2south);
 
-   const auto n1north = new DestroyerRoad(60, 500, semaphoreTime);
-   const auto n1south = new CreationRoad(60, 500, semaphoreTime, 20);
+   const auto n1north = new DestroyerRoad(60, 500, timer);
+   const auto n1south = new CreationRoad(60, 500, timer, 20);
    roads.push_back(n1north);
    roads.push_back(n1south);
 
-   const auto c1west = new Road(60, 300, semaphoreTime);
-   const auto c1east = new Road(60, 300, semaphoreTime);
+   const auto c1west = new NeutralRoad(60, 300, timer);
+   const auto c1east = new NeutralRoad(60, 300, timer);
    roads.push_back(c1west);
    roads.push_back(c1east);
-
-   ////// CONNECTING ROADS //////
 
    o1east->connectRoad(s1south);
    o1east->connectRoad(c1east);
@@ -81,6 +75,15 @@ App::App() : userIO(new UserIO())
    c1east->connectRoad(n2north);
 }
 
+App::App() : userIO(new UserIO())
+{
+   clock = new Clock(userIO->getExecTime());
+   //clock->connectNotify(std::bind(&App::notifyAll, this));
+
+   const auto semaphoreTime = userIO->getSemaphoreTime();
+   
+   createRoads(semaphoreTime);
+}
 
 App::~App()
 {
@@ -89,9 +92,10 @@ App::~App()
    delete userIO;
 }
 
-void App::notifyAll()
+void App::notifyAll(const int time)
 {
-   std::cout << "NOTIFYING" << std::endl;
+   for (auto road : roads)
+      road->getNotify(time);  
 }
 
 void App::addEvent(const std::string description)

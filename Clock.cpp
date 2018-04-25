@@ -9,22 +9,25 @@ Clock::Clock(const double _execTime)
    startTime = currentTime;
 
    limit = startTime + _execTime;
+
+   startClock((_execTime * 5) / 100);
 }
 
 
-void Clock::startClock()
+void Clock::startClock(const double period)
 {
    while (currentTime <= limit)
    {
-      const auto passedTime = startTime + difftime(currentTime, startTime) * 240;  // cada 1s = 4min
+      currentTime = startTime + difftime(currentTime, startTime) * /*period*/ 300; 
 
+      notifyAll();
       time(&currentTime);
 
-      oneSec(passedTime);
+      oneSec();
    }
 }
 
-std::string Clock::getCurrentTimeFormated()
+std::string Clock::getCurrentTimeFormated() const
 {
    char buffer[80];
 
@@ -36,8 +39,8 @@ std::string Clock::getCurrentTimeFormated()
    return std::string(buffer);
 }
 
-void Clock::oneSec(time_t passed) const
-{
+void Clock::oneSec() const
+{   
    using namespace std::literals::chrono_literals;
 
    std::this_thread::sleep_for(1s);

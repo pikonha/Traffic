@@ -3,9 +3,7 @@
 
 #pragma once
 #include <string>
-#include <chrono>
 #include <functional>
-
 
 class Clock
 {
@@ -16,14 +14,14 @@ class Clock
    std::function<void()> notifyAll;
 
 public:
+   ~Clock() = default;
    Clock(const double _execTime);
-   ~Clock() {}
 
-   void startClock();
+   void startClock(const double period);
 
-   std::string getCurrentTimeFormated();
+   std::string getCurrentTimeFormated() const;
 
-   void oneSec(time_t passed) const;
+   void oneSec() const;
 
    void connectNotify(std::function<void()> _notify) { notifyAll = _notify; }
 };

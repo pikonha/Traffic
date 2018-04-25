@@ -1,8 +1,6 @@
 ﻿  App.cpp
   CreationRoad.cpp
-c:\users\lucas.picollo\documents\projects\traffic\creationroad.h(16): error C2661: 'Road::Road': no overloaded function takes 2 arguments
   DestroyerRoad.cpp
-c:\users\lucas.picollo\documents\projects\traffic\destroyerroad.h(13): error C2661: 'Road::Road': no overloaded function takes 2 arguments
-  Road.cpp
-  Traffic.cpp
+  NeutralRoad.cpp
   Generating Code...
+  Traffic.vcxproj -> C:\Users\lucas.picollo\Documents\Projects\Traffic\x64\Debug\Traffic.exe

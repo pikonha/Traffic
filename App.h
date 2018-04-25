@@ -7,7 +7,7 @@
 #include <functional>
 #include "Clock.h"
 #include "UserIO.h"
-#include <list>
+#include <vector>
 #include "Road.h"
 
 class App
@@ -17,12 +17,14 @@ class App
    Clock* clock;
    UserIO* userIO;
 
-   std::list<Road*> roads;
+   std::vector<Road*> roads;
+
+   void createRoads(const int timer);
 public:
    App();
    ~App();
 
-   void notifyAll();
+   void notifyAll(int time);
 
    void addEvent(const std::string description);
 };
