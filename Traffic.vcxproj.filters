@@ -51,7 +51,10 @@
     <ClInclude Include="NeutralRoad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Cars.h">
+    <ClInclude Include="Queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="List.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -92,7 +95,10 @@
     <ClCompile Include="NeutralRoad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Cars.cpp">
+    <ClCompile Include="Queue.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="List.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

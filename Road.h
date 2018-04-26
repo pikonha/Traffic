@@ -2,29 +2,30 @@
 #define INCLUDED_ROAD_H
 
 #pragma once
-#include <queue>
+
 #include <functional>
 #include <list>
 #include "Semaphore.h"
+#include "Queue.h"
+#include "List.h"
 
 class Car;
 
 class Road
 {
 protected:
-   int capacity;
    int velocity;
 
    Semaphore* semaphore;
 
-   std::queue<Car*> cars;   
-   std::list<Road*> connectedRoads;
+   Queue<Car*> cars;   
+   List<Road*> connectedRoads;
 
    std::function<void(std::string description)> addEvent;
 
 public:
    virtual ~Road() { delete semaphore; }
-   Road(const int _length, const int _vel, const int timer) : capacity(_length), velocity(_vel), semaphore(new Semaphore(timer)) {}
+   Road(const int _vel, const int timer) : velocity(_vel), semaphore(new Semaphore(timer)) {}
 
    void connectAddEvent(const std::function<void(std::string)> _addEvent) { addEvent = _addEvent; }
 
