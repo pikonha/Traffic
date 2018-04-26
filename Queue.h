@@ -11,25 +11,21 @@ class Queue
    int size;
    int capacity;
 public:
-   Queue();
-
    ~Queue();
-   Queue(std::size_t max);
+   Queue(int _capacity);
 
    T dequeue();
    void enqueue(const T& data);
 
-   T& back();
+   T& front();
 
    void clear();
       
-   std::size_t getSize() const { return size; }
-   std::size_t getCapacity() const { return capacity; }
+   int getSize() const { return size; }
+   int getCapacity() const { return capacity; }
 
    bool full() const;
    bool empty() const;  
 };
-
-
 
 #endif

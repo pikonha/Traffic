@@ -34,7 +34,7 @@ public:
    int getSize() const { return size; }
    int getCapacity() const { return capacity; }
 
-   T& operator[](std::size_t index) { return contents[index]; }
+   T& operator[](int index) const { return contents[index]; }
 };
 
 

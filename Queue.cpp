@@ -1,13 +1,14 @@
 #include "stdafx.h"
 #include "Queue.h"
 
+
 template <typename T>
-Queue<T>::Queue()
+Queue<T>::~Queue()
 {
 }
 
 template <typename T>
-Queue<T>::~Queue()
+Queue<T>::Queue(int _capacity)
 {
 }
 
@@ -22,7 +23,7 @@ void Queue<T>::enqueue(const T& data)
 }
 
 template <typename T>
-T& Queue<T>::back()
+T& Queue<T>::front()
 {
 }
 

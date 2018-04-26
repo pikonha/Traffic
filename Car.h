@@ -9,6 +9,8 @@ class Car
    int walked;
 
    int speed;
+
+   int option;
 public:
    ~Car() = default;
    Car(const int _speed);   

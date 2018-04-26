@@ -5,8 +5,8 @@
 
 void DestroyerRoad::deleteCar()
 {
-   const auto car = cars.front();
-   cars.pop();
+   const auto car = cars->front();
+   cars->dequeue();
 
    addEvent("Car destroyed");
 

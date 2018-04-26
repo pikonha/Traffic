@@ -3,21 +3,17 @@
 
 #pragma once
 #include "Event.h"
-#include <vector>
-#include <functional>
 #include "Clock.h"
 #include "UserIO.h"
-#include <vector>
 #include "Road.h"
 
 class App
 {
-   std::vector<Event*> events;
-
    Clock* clock;
    UserIO* userIO;
 
-   std::vector<Road*> roads;
+   List<Road*>* roads;
+   List<Event*>* events;
 
    void createRoads(const int timer);
 public:
