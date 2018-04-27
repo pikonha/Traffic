@@ -5,7 +5,7 @@
 
 void DestroyerRoad::deleteCar()
 {
-   const auto car = cars->front();
+   const auto car = cars->back();
    cars->dequeue();
 
    addEvent("Car destroyed");

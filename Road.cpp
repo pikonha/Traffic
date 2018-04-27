@@ -2,6 +2,13 @@
 #include "Road.h"
 #include "Car.h"
 
+Road::Road(const int _vel, const int timer) :
+   velocity(_vel),
+   semaphore(new Semaphore(timer)),
+   connectedRoads(new List<Road*>(3))
+   //cars(new Queue<Car*>())
+{}
+
 void Road::connectRoads(const RoadPercent r1, const RoadPercent r2, const RoadPercent r3)
 {
    for (int i = 0; i < r1.percent; i++)

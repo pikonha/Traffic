@@ -12,7 +12,7 @@ class List
    int capacity;
 
 public:
-   ~List();
+   virtual ~List();
    List(int _capacity);
 
    void push_back(const T& data);
@@ -24,7 +24,7 @@ public:
 
    void clear();
    void remove(const T& data);
-
+   
    bool empty() const;
    bool full() const;
    bool contains(const T& data) const;

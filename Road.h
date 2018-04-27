@@ -26,7 +26,7 @@ protected:
 
 public:
    virtual ~Road() { delete semaphore; }
-   Road(const int _vel, const int timer) : velocity(_vel), semaphore(new Semaphore(timer)), connectedRoads(new List<Road*>(3)){}
+   Road(const int _vel,  const int timer);
 
    //////////////////////////////////////////////////////////
    struct RoadPercent
