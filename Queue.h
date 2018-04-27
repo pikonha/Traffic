@@ -12,12 +12,12 @@ class Queue
    int capacity;
 public:
    ~Queue();
-   Queue(int _capacity);
+   Queue(const int _capacity);
 
    T dequeue();
    void enqueue(const T& data);
 
-   T& front();
+   T& back();
 
    void clear();
       

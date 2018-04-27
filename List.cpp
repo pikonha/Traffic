@@ -16,19 +16,21 @@ List<T>::List(int _capacity)
    contents = new T[capacity];
 }
 
+/* Throws std::overflow_error */
 template <typename T>
 void List<T>::push_back(const T& data)
 {
    if (full())
-      throw std::overflow_error("Lista cheia");
+      throw std::overflow_error("Empty list.");
    contents[size++] = data;
 }
 
+/* Throws std::overflow_error */
 template <typename T>
 void List<T>::push_front(const T& data)
 {
    if (full())
-      throw std::overflow_error("Lista cheia");
+      throw std::overflow_error("Full list");
    if (size > 0) {
       for (int i = size; i > 0; i--)
          contents[i] = contents[i - 1];
