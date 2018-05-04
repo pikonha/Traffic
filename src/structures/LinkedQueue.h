@@ -7,40 +7,45 @@
 template<typename T>
 class LinkedQueue {
 public:
-   LinkedQueue();
+   LinkedQueue(){}
    ~LinkedQueue();
 
    void clear();
+
    void push_back(const T& data); 
    void push_front(const T& data); 
-   void insert(const T& data, std::size_t index); 
-   void insert_sorted(const T& data); 
-   T& at(std::size_t index); 
-   T pop(std::size_t index); 
+
+   void insert(const T& data, std::sizet index); 
+
+   T& at(std::sizet index); 
+
+   T pop(std::sizet index); 
    T pop_back();  
    T pop_front(); 
+
    void remove(const T& data);  
    bool empty() const; 
    bool contains(const T& data) const;  
-   std::size_t find(const T& data) const; 
-   std::size_t size() const;
+
+   int find(const T& data) const; 
+   int getSize() const;
 
 private:
    struct  Node 
    {   
       ~Node() = default;
       Node() {}
-      Node(const T& data) : data_{ data } {}
-      Node(const T& data, Node* next) : data_{ data }, next_{ next } {}      
+      Node(const T& data) : data{ data } {}
+      Node(const T& data, Node* next) : data{ data }, next{ next } {}      
 
-      T& getData() {  return data_; }
+      T& getData() {  return data; }
 
-      Node* getNext() {  return next_; }
-      void setNext(Node* node) { next_ = node; }
+      Node* getNext() {  return next; }
+      void setNext(Node* node) { next = node; }
 
    private:
-      T data_{nullptr};
-      Node* next_{ nullptr };
+      T data{nullptr};
+      Node* next{ nullptr };
    };
 
    Node* end() {
@@ -52,14 +57,8 @@ private:
    }
 
    Node* head{ nullptr };
-   int size_;
+   int size{0};
 };
-
-template<typename T>
-LinkedQueue<T>::LinkedQueue() {
-   head = nullptr;
-   size_ = 0;
-}
 
 template<typename T>
 LinkedQueue<T>::~LinkedQueue() {
@@ -68,83 +67,55 @@ LinkedQueue<T>::~LinkedQueue() {
 
 template<typename T>
 void LinkedQueue<T>::clear() {
-   Node* current = head;
-   Node* next;
-   while (current != nullptr) {
-      next = current->next();
-      delete current;
-      current = next;
-   }
-   head = nullptr;
-   size_ = 0;
+   while (size)
+      pop_back();
 }
 
 template<typename T>
 void LinkedQueue<T>::push_back(const T& data) {
-   if (empty()) {
+   if (empty()) 
       push_front(data);
-   }
+   
    else {
       end()->next(new Node(data));
-      size_++;
+      size++;
    }
 }
 
 template<typename T>
 void LinkedQueue<T>::push_front(const T& data) {
-   Node *novo = new Node(data);
+
    if (novo == nullptr) 
       throw std::out_of_range("Erro! Lista cheia.");
    
    novo->next(head);
    head = novo;
-   size_++;   
+   size++;   
 }
 
 template<typename T>
-void LinkedQueue<T>::insert(const T& data, std::size_t index) {
-   if (index > size_ || index < 0)
+void LinkedQueue<T>::insert(const T& data, std::sizet index) {
+   if (index > size || index < 0)
       throw std::out_of_range("Index error");
    if (empty()) {
       //  push_front(data);
       Node *novo = new Node(data);
       novo->next(head);
       head = novo;
-      size_++;
+      size++;
    }
    else {
       auto aux = head;
       for (int i = 1; i < index; i++)
          aux = aux->next();
       aux->next(new Node(data, aux->next()));
-      size_++;
+      size++;
    }
 }
 
 template<typename T>
-void LinkedQueue<T>::insert_sorted(const T& data) {
-   if (empty()) {
-      push_front(data);
-   }
-   else {
-      auto atual = head;
-      int pos = 1;
-      while (atual->next() != nullptr && data > atual->data()) {
-         atual = atual->next();
-         pos++;
-      }
-      if (data > atual->data()) {
-         insert(data, pos + 1);
-      }
-      else {
-         insert(data, pos);
-      }
-   }
-}
-
-template<typename T>
-T& LinkedQueue<T>::at(std::size_t index) {
-   if (index > size_ || index < 0)
+T& LinkedQueue<T>::at(std::sizet index) {
+   if (index > size || index < 0)
       throw std::out_of_range("Erro! Posição não existe.");
    Node *aux = head;
    for (int i = 0; i < index; i++) {
@@ -154,15 +125,15 @@ T& LinkedQueue<T>::at(std::size_t index) {
 }
 
 template<typename T>
-T LinkedQueue<T>::pop(std::size_t index) {
+T LinkedQueue<T>::pop(std::sizet index) {
    Node* temp_node = head;;
-   if (index > size_ || index < 0) 
+   if (index > size || index < 0) 
       throw std::out_of_range("Erro de index");
    
    if (index == 1) 
       head = temp_node->next();   
 
-   else if (index == size_) {
+   else if (index == size) {
       while (temp_node->next() != nullptr)
          temp_node = temp_node->next();
       temp_node->next(nullptr);
@@ -172,13 +143,13 @@ T LinkedQueue<T>::pop(std::size_t index) {
          temp_node = temp_node->next();
       temp_node->next(temp_node->next());
    }
-   size_--;
+   size--;
    return temp_node->data();
 }
 
 template<typename T>
 T LinkedQueue<T>::pop_back() {
-   if (size_ == 0) {
+   if (size == 0) {
       throw std::out_of_range("Erro! Lista vazia.");
    }
    Node *um = head;
@@ -193,17 +164,17 @@ T LinkedQueue<T>::pop_back() {
    dois = nullptr;
    free(dois);
    um->next(nullptr);
-   size_--;
+   size--;
    return volta;
 }
 
 /** retirar do início */
 template<typename T>
 T LinkedQueue<T>::pop_front() {
-   if (size_ == 0) 
+   if (size == 0) 
       throw std::out_of_range("Erro! Lista vazia.");
    
-   if (size_ == 1) {
+   if (size == 1) {
       auto volta = head->data();
       this->clear();
       return volta;
@@ -212,7 +183,7 @@ T LinkedQueue<T>::pop_front() {
    Node *aux = head->next();
    auto volta = head->data();
    head = aux;
-   size_--;
+   size--;
    return volta;
 }
 
@@ -241,41 +212,38 @@ void  LinkedQueue<T>::remove(const T& data) {
 
 template<typename T>
 bool LinkedQueue<T>::empty() const {
-   return size_ == 0;
+   return size == 0;
 }
 
 
 template<typename T>
 bool LinkedQueue<T>::contains(const T& data) const {
-   int flag = 0;
-   Node *aux = head;
-   for (int i = 0; i < size_; i++) {
+   auto aux = head;
+   for (int i = 0; i < size; i++) {
       if (aux->data() == data) {
          flag = 1;
       }
       aux = aux->next();
-   }
-   free(aux);
-   return flag == 1;   
+   } 
 }
 
 template<typename T>
-std::size_t LinkedQueue<T>::find(const T& data) const {
-   if (size_ == 0) 
+int LinkedQueue<T>::find(const T& data) const {
+   if (size == 0) 
       throw std::out_of_range("Erro! Lista vazia.");
    
-   Node *aux = head;
-   for (int i = 0; i < size_; i++) {
+   auto aux = head;
+   for (int i = 0; i < size; i++) {
       if (aux->data() == data)
          return i;
       aux = aux->next();
    }
-   return size_;
+   return -1;
 }
 
 template<typename T>
-std::size_t LinkedQueue<T>::size() const {
-   return size_;
+int LinkedQueue<T>::getSize() const {
+   return size;
 }
 
 #endif
