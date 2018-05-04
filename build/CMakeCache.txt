@@ -164,6 +164,9 @@ data_SOURCE_DIR:STATIC=C:/Users/lucas.picollo/Documents/Projects/Traffic/src/dat
 //Value Computed by CMake
 struct_BINARY_DIR:STATIC=C:/Users/lucas.picollo/Documents/Projects/Traffic/build/src/structures
 
+//Dependencies for target
+struct_LIB_DEPENDS:STATIC=
+
 //Value Computed by CMake
 struct_SOURCE_DIR:STATIC=C:/Users/lucas.picollo/Documents/Projects/Traffic/src/structures
 

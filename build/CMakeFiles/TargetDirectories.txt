@@ -4,4 +4,5 @@ C:/Users/lucas.picollo/Documents/Projects/Traffic/build/src/app/CMakeFiles/app.d
 C:/Users/lucas.picollo/Documents/Projects/Traffic/build/src/app/CMakeFiles/ALL_BUILD.dir
 C:/Users/lucas.picollo/Documents/Projects/Traffic/build/src/data/CMakeFiles/data.dir
 C:/Users/lucas.picollo/Documents/Projects/Traffic/build/src/data/CMakeFiles/ALL_BUILD.dir
+C:/Users/lucas.picollo/Documents/Projects/Traffic/build/src/structures/CMakeFiles/struct.dir
 C:/Users/lucas.picollo/Documents/Projects/Traffic/build/src/structures/CMakeFiles/ALL_BUILD.dir

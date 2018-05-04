@@ -5,7 +5,7 @@ Road::Road(const int _vel, const int timer) :
    velocity(_vel),
    semaphore(new Semaphore(timer)),
    connectedRoads(Lista<Road*>(3)),
-   cars(Fila<Car*>(5))
+   cars(LinkedQueue<Car*>())
 {}
 
 void Road::connectRoads(const RoadPercent r1, const RoadPercent r2, const RoadPercent r3)
@@ -21,14 +21,7 @@ void Road::connectRoads(const RoadPercent r1, const RoadPercent r2, const RoadPe
 }
 
 bool Road::recieveCar(Car* car)
-{
-   //if (capacity - car->getLength() > 0)
-   //{
-   //   cars->enqueue(car);
-   //   capacity -= car->getLength();
-   //   addEvent("Car changing road.");
-   //   return true;
-   //}
+{  
 
    addEvent("Full road.");
    return false;

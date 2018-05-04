@@ -17,6 +17,7 @@ class App
    Lista<Event*> events;
 
    void createRoads(const int timer);
+   void connectRoadEvent(Road* road);
 public:
    App();
    ~App();

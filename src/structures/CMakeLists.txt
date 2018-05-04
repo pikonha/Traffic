@@ -1,11 +1,7 @@
 project(struct CXX)
 	
-add_library(struct INTERFACE)
-target_sources(struct INTERFACE Lista.h Fila.h)
-
-#target_sources(struct INTERFACE ${STRUCT_SRC})
-#set_target_properties(struct PROPERTIES LINKER_LANGUAGE CXX)
+add_library(struct LinkedQueue.h Lista.h just_compile.cpp)
 
 target_include_directories(struct INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}")
-#target_include_directories(struct INTERFACE)
+
 

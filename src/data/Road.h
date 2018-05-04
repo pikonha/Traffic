@@ -4,9 +4,8 @@
 #pragma once
 
 #include <functional>
-#include <list>
 #include "Semaphore.h"
-#include "Fila.h"
+#include "LinkedQueue.h"
 #include "Lista.h"
 
 class Car;
@@ -18,7 +17,7 @@ protected:
 
    Semaphore* semaphore;
 
-   Fila<Car*> cars;
+   LinkedQueue<Car*> cars;
    Lista<Road*> connectedRoads;
 
    std::function<void(std::string description)> addEvent;

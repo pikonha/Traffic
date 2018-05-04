@@ -15,4 +15,6 @@ void CreationRoad::getNotify(const int time)
       createCar();
    if (semaphore->getTimer() % time == 0)
       semaphore->changeState();
+
+
 }
