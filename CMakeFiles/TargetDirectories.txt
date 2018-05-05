@@ -1,0 +1,11 @@
+/Users/matheuslc/code/Traffic/CMakeFiles/rebuild_cache.dir
+/Users/matheuslc/code/Traffic/CMakeFiles/edit_cache.dir
+/Users/matheuslc/code/Traffic/src/app/CMakeFiles/rebuild_cache.dir
+/Users/matheuslc/code/Traffic/src/app/CMakeFiles/edit_cache.dir
+/Users/matheuslc/code/Traffic/src/app/CMakeFiles/app.dir
+/Users/matheuslc/code/Traffic/src/data/CMakeFiles/rebuild_cache.dir
+/Users/matheuslc/code/Traffic/src/data/CMakeFiles/edit_cache.dir
+/Users/matheuslc/code/Traffic/src/data/CMakeFiles/data.dir
+/Users/matheuslc/code/Traffic/src/structures/CMakeFiles/rebuild_cache.dir
+/Users/matheuslc/code/Traffic/src/structures/CMakeFiles/edit_cache.dir
+/Users/matheuslc/code/Traffic/src/structures/CMakeFiles/struct.dir

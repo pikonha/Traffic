@@ -24,7 +24,7 @@ public:
 
    void notifyAll(int time);
 
-   void addEvent(const std::string description);
+   void addEvent(std::string description);
 };
 
 #endif

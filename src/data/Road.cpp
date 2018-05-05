@@ -23,7 +23,7 @@ void Road::connectRoads(const RoadPercent r1, const RoadPercent r2, const RoadPe
 bool Road::recieveCar(Car* car)
 {  
 
-   addEvent("Full road.");
+//    addEvent("Full road.");
    return false;
 }
 

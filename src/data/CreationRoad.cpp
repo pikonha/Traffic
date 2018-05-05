@@ -6,7 +6,7 @@ void CreationRoad::createCar()
 {
    cars.enqueue(new Car(velocity));
 
-   addEvent("New car created");
+//    addEvent("New car created");
 }
 
 void CreationRoad::getNotify(const int time)

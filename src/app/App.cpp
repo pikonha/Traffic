@@ -68,7 +68,7 @@ void App::createRoads(const int timer)
 
 void App::connectRoadEvent(Road* road)
 {
-   road->connectAddEvent([this](const std::string descp) { addEvent(descp); });
+   //road->connectAddEvent([this](const std::string descp) { addEvent(descp); });
 }
 
 App::App() : userIO(new UserIO()), roads(Lista<Road*>(14)), events(Lista<Event*>(10))
@@ -96,7 +96,7 @@ void App::notifyAll(const int time)
       roads.operator[](i)->getNotify(time);
 }
 
-void App::addEvent(const std::string description)
+void App::addEvent(std::string description)
 {
    events.push_back(new Event(clock->getCurrentTimeFormated(), description));
 }

@@ -6,7 +6,7 @@ void DestroyerRoad::deleteCar()
 {
    delete cars.dequeue();
 
-   addEvent("Car destroyed");
+//    addEvent("Car destroyed");
 
 }
 

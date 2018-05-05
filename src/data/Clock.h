@@ -19,7 +19,7 @@ public:
 
    void startClock(const double period);
 
-   std::string getCurrentTimeFormated() const;
+   std::string getCurrentTimeFormated();
 
    void oneSec() const;
 

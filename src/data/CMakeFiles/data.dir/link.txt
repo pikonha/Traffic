@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libdata.a  CMakeFiles/data.dir/Car.cpp.o CMakeFiles/data.dir/Clock.cpp.o CMakeFiles/data.dir/CreationRoad.cpp.o CMakeFiles/data.dir/DestroyerRoad.cpp.o CMakeFiles/data.dir/Event.cpp.o CMakeFiles/data.dir/NeutralRoad.cpp.o CMakeFiles/data.dir/Road.cpp.o CMakeFiles/data.dir/Semaphore.cpp.o CMakeFiles/data.dir/UserIO.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libdata.a
