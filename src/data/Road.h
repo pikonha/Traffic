@@ -7,6 +7,7 @@
 #include "Semaphore.h"
 #include "LinkedQueue.h"
 #include "Lista.h"
+#include "Logger.h"
 
 class Car;
 
@@ -14,17 +15,24 @@ class Road
 {
 protected:
    int velocity;
+   int length;
+   int capacity;
 
    Semaphore* semaphore;
+
+   Logger logger;
 
    LinkedQueue<Car*> cars;
    Lista<Road*> connectedRoads;
 
-   std::function<void(std::string description)> addEvent;
+   void moveCars();
+   bool removeCar();
+   bool recieveCar(Car* car);  
 
+   bool checkCarFit(Car* car) const;
 public:
    virtual ~Road() { delete semaphore; }
-   Road(const int _vel,  const int timer);
+   Road(const int _vel, const int _length, const int timer);
 
    //////////////////////////////////////////////////////////
    struct RoadPercent
@@ -40,13 +48,12 @@ public:
    };
    /////////////////////////////////////////////////////////
 
-   void connectAddEvent(std::function<void(std::string)> _addEvent) { addEvent = _addEvent; }
-
    void connectRoads(const RoadPercent, const RoadPercent, const RoadPercent);
-   
-   bool recieveCar(Car* car);
 
    virtual void getNotify(const int time) = 0;
+
+   int getCapacity() const { return capacity; }
+   Logger getLogger() const { return logger; }
 
 };
 

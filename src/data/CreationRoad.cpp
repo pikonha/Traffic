@@ -2,11 +2,10 @@
 #include "CreationRoad.h"
 #include "Car.h"
 
-void CreationRoad::createCar()
+Car* CreationRoad::createCar()
 {
-   cars.enqueue(new Car(velocity));
-
-//    addEvent("New car created");
+   recieveCar(new Car(velocity));
+   logger.addLog(CAR_CREATED);
 }
 
 void CreationRoad::getNotify(const int time)
@@ -15,6 +14,5 @@ void CreationRoad::getNotify(const int time)
       createCar();
    if (semaphore->getTimer() % time == 0)
       semaphore->changeState();
-
 
 }

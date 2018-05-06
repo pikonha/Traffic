@@ -4,8 +4,7 @@
 #ifndef STRUCTURES_LINKED_LIST_H
 #define STRUCTURES_LINKED_LIST_H
 
-#include <cstdint>  // std::size_t
-#include <stdexcept>  // C++ exceptions
+#include <stdexcept>
 
 template<typename T>
 class LinkedList {
@@ -78,9 +77,6 @@ class LinkedList {
         void next(Node* node) {  // setter: próximo
             next_ = node;
         }
-
-     private:
-        
     };
 
     Node* end() {  // último nodo da lista

@@ -5,9 +5,7 @@
 void DestroyerRoad::deleteCar()
 {
    delete cars.dequeue();
-
-//    addEvent("Car destroyed");
-
+   logger.addLog(CAR_DELETED);
 }
 
 void DestroyerRoad::getNotify(const int time)

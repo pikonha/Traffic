@@ -1,59 +1,161 @@
-// Copyright 2017 <Diogo Junior de Souza>
+#pragma once
+#ifndef INCLUDED_LINKEDQUEUE_H
+#define INCLUDED_LINKEDQUEUE_H
 
-#ifndef STRUCTURES_LINKED_QUEUE_H
-#define STRUCTURES_LINKED_QUEUE_H
-
-#include <cstdint>   // std::size_t
-#include <stdexcept> // C++ exceptions
-#include "LinkedList.h"
-
-template <typename T>
+template<typename T>
 class LinkedQueue
 {
-    public:
-      LinkedQueue() : linkedList_{}
-      {
+   class Node {  // Elemento
+   public:
+      explicit Node(const T& data) : data_{ data }
+      {}
+
+      Node(const T& data, Node* next) :
+         data_{ data },
+         next_{ next }
+      {}
+
+      T& data() {  
+         return data_;
       }
 
-      ~LinkedQueue() {}
-
-      void clear()
-      {
-            linkedList_.clear();
+      const T& data() const {  
+         return data_;
       }
 
-      void enqueue(const T &data)
-      {
-            linkedList_.push_back(data);
+      Node* next() {  
+         return next_;
       }
 
-      T dequeue()
-      {
-            return linkedList_.pop_front();
+      const Node* next() const {  
+         return next_;
       }
 
-      T &front() const
-      {
-            return linkedList_.at(0);
+      void next(Node* node) {  
+         next_ = node;
       }
 
-      T &back() const
-      {
-            return linkedList_.at(size() - 1);
-      }
+   private:
+      T data_;
+      Node* next_{ nullptr };
+   };
 
-      bool empty() const
-      {
-            return linkedList_.empty();
-      }
+   Node* head;
+   Node* tail;
+   std::size_t size_;
 
-      std::size_t size() const
-      {
-            return linkedList_.size();
-      }
+public:
+   ~LinkedQueue();
+   LinkedQueue();
+   
+   void clear();
+   void enqueue(const T& data);
 
-    private:
-      LinkedList<T> linkedList_;
+   T dequeue();
+   T& front() const;
+   T& back() const;
+
+   bool empty() const;
+
+   std::size_t size() const;
+
+   void forEach(std::function<void(T)> func);
 };
 
-#endif
+template<typename T>
+LinkedQueue<T>::~LinkedQueue()
+{
+   clear();
+}
+
+template<typename T>
+LinkedQueue<T>::LinkedQueue()
+{
+   head= tail= nullptr;
+   size_= 0;
+}
+
+template<typename T>
+void LinkedQueue<T>::clear()
+{
+   while(size_)
+      dequeue();
+}
+
+template<typename T>
+void LinkedQueue<T>::enqueue(const T & data)
+{
+   if (empty()) {
+      head= new Node(data);
+      tail= head;
+   } 
+   else {
+      auto new_node= new Node(data);
+      tail->next(new_node);
+      tail= new_node;
+   }
+   size_++;
+}
+
+template<typename T>
+T LinkedQueue<T>::dequeue()
+{
+   if (empty())
+      throw std::out_of_range("LIST IS EMPTY!");
+
+   if (size_ == 1) {
+      T temp= head->data();
+      head= nullptr;
+      tail= nullptr;
+      size_--;
+      return temp;
+   }
+   Node* current= head;
+   T temp= current->data();
+   head= current->next();
+   delete current;
+   size_--;
+   return temp;
+}
+
+template<typename T>
+T &LinkedQueue<T>::front() const
+{
+   if (empty())
+      throw std::out_of_range("LIST IS EMPTY!");
+   return head->data();
+}
+
+template<typename T>
+ T &LinkedQueue<T>::back() const
+{
+   if (empty())
+      throw std::out_of_range("LIST IS EMPTY!");
+   return tail->data();
+}
+
+template<typename T>
+ bool LinkedQueue<T>::empty() const
+{
+   return size_ == 0;
+}
+
+template<typename T>
+std::size_t LinkedQueue<T>::size() const
+{
+   return size_;
+}
+
+template <typename T>
+void LinkedQueue<T>::forEach(std::function<void(T)> func)
+{
+   auto temp = head;
+
+   for (int i = 0; i < size_; i++)
+   {
+      func(temp);
+      temp = temp->next_;
+   }
+}
+
+#endif // !INCLUDED_LINKEDQUEUE_H

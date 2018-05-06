@@ -12,8 +12,9 @@ public:
    ~DestroyerRoad() = default;
    DestroyerRoad(
       const int _vel,
+      const int _length,
       const int semaphoreTimer) :
-      Road(_vel, semaphoreTimer)
+      Road(_vel, _length, semaphoreTimer)
    {}  
 
    void getNotify(const int time) override;

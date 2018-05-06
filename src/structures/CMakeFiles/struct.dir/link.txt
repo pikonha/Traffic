@@ -1,2 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/ar qc libstruct.a  CMakeFiles/struct.dir/just_compile.cpp.o
-/Library/Developer/CommandLineTools/usr/bin/ranlib libstruct.a

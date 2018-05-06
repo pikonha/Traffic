@@ -12,6 +12,7 @@ SET	(
 	DestroyerRoad.h
 	Event.cpp
 	Event.h
+	Logger.h
 	NeutralRoad.cpp
 	NeutralRoad.h
 	Road.cpp

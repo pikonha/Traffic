@@ -21,6 +21,7 @@ public:
 
    int getWalked() const { return walked; }
    int getLength() const { return length; }
+   int getOption() const { return option; }
 };
 
 #endif
