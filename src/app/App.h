@@ -1,7 +1,8 @@
+#pragma once
+
 #ifndef INCLUDED_APP_H
 #define INCLUDED_APP_H
 
-#pragma once
 #include "Clock.h"
 #include "UserIO.h"
 #include "Road.h"
@@ -20,6 +21,8 @@ public:
    ~App();
 
    void notifyAll(int time) const;
+
+   void startApplication() const;
 };
 
 #endif

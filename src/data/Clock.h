@@ -1,21 +1,24 @@
+#pragma once
+
 #ifndef INCLUDED_CLOCK_H
 #define INCLUDED_CLOCK_H
 
-#pragma once
 #include <string>
-#include <functional>
+#include "../app/App.h"
 
 class Clock
 {
+   App& owner;
+
    time_t limit;
    time_t startTime;
    time_t currentTime;
 
-   std::function<void(int)> notifyAll;
+   //std::function<void(int)> notifyAll;
 
 public:
    ~Clock() = default;
-   Clock(const double _execTime);
+   Clock(App& _owner, const double _execTime);
 
    void startClock(const double period);
 
@@ -23,7 +26,7 @@ public:
 
    void oneSec() const;
 
-   void connectNotify(std::function<void(int)> _notify) { notifyAll = _notify; }
+   //void connectNotify(std::function<void(int)> _notify) { notifyAll = _notify; }
 };
 
 #endif

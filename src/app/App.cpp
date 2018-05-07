@@ -56,10 +56,7 @@ void App::createRoads(const int timer)
 
 App::App() : userIO(new UserIO()), roads(Lista<Road*>(14))
 {
-   clock = new Clock(userIO->getExecTime());
-
-
-   /*clock->connectNotify([this](int elapsedMilli) { notifyAll(elapsedMilli);  });*/
+   clock = new Clock(*this, userIO->getExecTime());
 
    const auto semaphoreTime = userIO->getSemaphoreTime();
    createRoads(semaphoreTime);
@@ -86,5 +83,10 @@ void App::notifyAll(const int time) const
 
    userIO->printTotalLogs();
    
+}
+
+void App::startApplication() const
+{
+   clock->startClock(500);
 }
 

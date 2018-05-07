@@ -3,7 +3,7 @@
 #include <thread>
 #include <time.h>
 
-Clock::Clock(const double _execTime)
+Clock::Clock(App& _owner, const double _execTime) : owner(_owner)
 {
    time(&currentTime);
    startTime = currentTime;
@@ -20,7 +20,7 @@ void Clock::startClock(const double period)
    {
       currentTime = startTime + difftime(currentTime, startTime) * /*period*/ 300; 
 
-      //notifyAll(currentTime);
+      owner.notifyAll(currentTime);
       time(&currentTime);
 
       oneSec();

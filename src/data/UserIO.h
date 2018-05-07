@@ -1,7 +1,8 @@
+#pragma once
+
 #ifndef INCLUDED_USERIO_H
 #define INCLUDED_USERIO_H
 
-#pragma once
 #include <string>
 #include "Logger.h"
 
