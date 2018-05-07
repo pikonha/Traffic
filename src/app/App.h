@@ -19,7 +19,7 @@ public:
    App();
    ~App();
 
-   void notifyAll(int time);
+   void notifyAll(int time) const;
 };
 
 #endif

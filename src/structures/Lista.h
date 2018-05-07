@@ -36,7 +36,7 @@ public:
    int getSize() const { return size; }
    int getCapacity() const { return capacity; }
 
-   T& operator[](int index) const { return contents[index]; }
+   T& operator[](int index) const;
 };
 
 template <class T>
@@ -161,6 +161,12 @@ int Lista<T>::find(const T& data) const
          return i;
    }
    return -1;
+}
+
+template <class T>
+T& Lista<T>::operator[](const int index) const
+{
+   return contents[index];
 }
 
 

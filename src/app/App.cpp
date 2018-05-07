@@ -6,38 +6,38 @@
 
 void App::createRoads(const int timer)
 {
-   const auto o1west = new DestroyerRoad(80, 2000, timer);
-   const auto o1east = new CreationRoad(80, 2000, timer, 10);
+   const auto o1west = new DestroyerRoad("O1west", 80, 2000, timer);
+   const auto o1east = new CreationRoad("O1east", 80, 2000, timer, 10);
    roads.push_back(o1west);
    roads.push_back(o1east);
 
-   const auto s1south = new DestroyerRoad(60, 500, timer+5);
-   const auto s1north = new CreationRoad(60, 500, timer+5, 30);
+   const auto s1south = new DestroyerRoad("S1south", 60, 500, timer+5);
+   const auto s1north = new CreationRoad("S1north", 60, 500, timer+5, 30);
    roads.push_back(s1north);
    roads.push_back(s1south);
 
-   const auto s2south = new DestroyerRoad(40, 500, timer);
-   const auto s2north = new CreationRoad(40, 500, timer, 60);
+   const auto s2south = new DestroyerRoad("S2south",40, 500, timer);
+   const auto s2north = new CreationRoad("S2north", 40, 500, timer, 60);
    roads.push_back(s2south);
    roads.push_back(s2north);
 
-   const auto l1east = new DestroyerRoad(30, 400, timer+5);
-   const auto l1west = new CreationRoad(30, 400, timer+5, 10);
+   const auto l1east = new DestroyerRoad("L1east", 30, 400, timer+5);
+   const auto l1west = new CreationRoad("L1west", 30, 400, timer+5, 10);
    roads.push_back(l1east);
    roads.push_back(l1west);
 
-   const auto n2south = new DestroyerRoad(40, 500, timer+10);
-   const auto n2north = new CreationRoad(40, 500, timer+10, 20);
+   const auto n2south = new DestroyerRoad("N2south", 40, 500, timer+10);
+   const auto n2north = new CreationRoad("N2north",40, 500, timer+10, 20);
    roads.push_back(n2north);
    roads.push_back(n2south);
 
-   const auto n1north = new DestroyerRoad(60, 500, timer+15);
-   const auto n1south = new CreationRoad(60, 500, timer+15, 20);
+   const auto n1north = new DestroyerRoad("N1north", 60, 500, timer+15);
+   const auto n1south = new CreationRoad("N1south", 60, 500, timer+15, 20);
    roads.push_back(n1north);
    roads.push_back(n1south);
 
-   const auto c1west = new NeutralRoad(60, 300, timer+10);
-   const auto c1east = new NeutralRoad(60, 300, timer+15);
+   const auto c1west = new NeutralRoad("C1west", 60, 300, timer+10);
+   const auto c1east = new NeutralRoad("C1east", 60, 300, timer+15);
    roads.push_back(c1west);
    roads.push_back(c1east);
 
@@ -73,9 +73,17 @@ App::~App()
    delete userIO;
 }
 
-void App::notifyAll(const int time) 
+void App::notifyAll(const int time) const
 {
-   for (int i = 0; i < roads.getSize(); i++)   
-      roads.operator[](i)->getNotify(time);
+   userIO->printEventPartition(std::to_string(time));
+
+   for (int i = 0; i < roads.getSize(); i++) {
+      roads[i]->getNotify(time);
+      userIO->addLog(roads[i]->getLogger());
+      userIO->printLogs(roads[i]->getName(), roads[i]->getLogger());
+
+   }
+
+   
 }
 

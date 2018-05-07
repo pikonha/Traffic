@@ -24,7 +24,8 @@ void Road::moveCars()
    {}      
 }
 
-Road::Road(const int _vel, const int _length, const int timer) :
+Road::Road(const std::string _name, const int _vel, const int _length, const int timer) :
+   name(_name),
    velocity(_vel),
    length(_length),
    semaphore(new Semaphore(timer)),

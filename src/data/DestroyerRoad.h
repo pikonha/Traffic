@@ -11,10 +11,11 @@ class DestroyerRoad : public Road
 public:
    ~DestroyerRoad() = default;
    DestroyerRoad(
+      const std::string _name,
       const int _vel,
       const int _length,
       const int semaphoreTimer) :
-      Road(_vel, _length, semaphoreTimer)
+      Road(_name, _vel, _length, semaphoreTimer)
    {}  
 
    

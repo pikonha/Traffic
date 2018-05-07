@@ -22,6 +22,4 @@ void CreationRoad::getNotify(const int time)
 
    if (frequence % time == 0)
       createCar();
-
-
 }

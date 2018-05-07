@@ -35,6 +35,13 @@ public:
       case CAR_BLOCKED:       ++carsBlocked;    break;
       }
    }
+
+   int getEntry() const { return carsEntry; }
+   int getLeft() const { return carsLeft; }
+   int getCreated() const { return carsCreated; }
+   int getDeleted() const { return carsDeleted; }
+   int getBlocked() const { return carsBlocked; }
+
 };
 
 

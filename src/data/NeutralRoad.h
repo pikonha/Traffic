@@ -9,10 +9,12 @@ class NeutralRoad : public Road
 {
 public:
    ~NeutralRoad() = default;
-   NeutralRoad(const int _vel,
+   NeutralRoad(
+      const std::string _name,
+      const int _vel,
       const int _length,
       const int semaphoreTimer) :
-      Road(_vel, _length, semaphoreTimer)
+      Road(_name, _vel, _length, semaphoreTimer)
    {}  
 
    void getNotify(const int time) override;

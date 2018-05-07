@@ -13,6 +13,7 @@ class Car;
 class Road
 {
 protected:
+   std::string name;
    int velocity;
    int length;
 
@@ -28,7 +29,7 @@ protected:
    bool recieveCar(Car* car);  
 public:
    virtual ~Road() { delete semaphore; }
-   Road(const int _vel, const int _length, const int timer);
+   Road(const std::string _name, const int _vel, const int _length, const int timer);
 
    //////////////////////////////////////////////////////////
    struct RoadPercent
@@ -50,6 +51,7 @@ public:
 
    int getCapacity() const { return cars.getCapacity(); }
    Logger getLogger() const { return logger; }
+   std::string getName() const { return name; }
 
 };
 
