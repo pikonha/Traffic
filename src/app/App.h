@@ -2,7 +2,6 @@
 #define INCLUDED_APP_H
 
 #pragma once
-#include "Event.h"
 #include "Clock.h"
 #include "UserIO.h"
 #include "Road.h"
@@ -14,7 +13,6 @@ class App
    UserIO* userIO;
 
    Lista<Road*> roads;
-   Lista<Event*> events;
 
    void createRoads(const int timer);
 public:
@@ -22,8 +20,6 @@ public:
    ~App();
 
    void notifyAll(int time);
-
-   void addEvent(std::string description);
 };
 
 #endif

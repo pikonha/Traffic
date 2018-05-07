@@ -2,7 +2,6 @@
 #include "Clock.h"
 #include <thread>
 #include <time.h>
-#include <iostream>
 
 Clock::Clock(const double _execTime)
 {

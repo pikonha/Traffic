@@ -11,8 +11,6 @@ SET	(
 	CreationRoad.h
 	DestroyerRoad.cpp
 	DestroyerRoad.h
-	Event.cpp
-	Event.h
 	Logger.h
 	NeutralRoad.cpp
 	NeutralRoad.h
