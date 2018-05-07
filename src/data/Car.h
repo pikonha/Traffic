@@ -17,7 +17,7 @@ public:
 
    void move();
 
-   int setSpeed(const int _speed) { speed = _speed; }
+   void setSpeed(const int _speed) { speed = _speed; }
 
    int getWalked() const { return walked; }
    int getLength() const { return length; }

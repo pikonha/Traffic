@@ -7,7 +7,7 @@
 class DestroyerRoad : public Road
 {
    void deleteCar();
-
+   void checkFirstCar();
 public:
    ~DestroyerRoad() = default;
    DestroyerRoad(
@@ -17,6 +17,7 @@ public:
       Road(_vel, _length, semaphoreTimer)
    {}  
 
+   
    void getNotify(const int time) override;
 };
 

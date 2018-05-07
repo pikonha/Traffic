@@ -14,10 +14,11 @@ class Semaphore
    int timer;
 
 public:
-   ~Semaphore() {}
+   ~Semaphore() = default;
    Semaphore(const int _timer) : state(RED), timer(_timer) {}
 
    int getTimer() const { return timer; }
+   bool isOpen() const { return state == GREEN; }
    void changeState() { state == RED ? state = GREEN : state = RED; }
    
 };

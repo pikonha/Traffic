@@ -5,17 +5,19 @@ void Road::moveCars()
 {
    try {
       auto car = cars.front();
-      if (car->getWalked() == length)
+      if (car.getWalked() >= length)
       {
-         const auto carOption = car->getOption();
-         if (connectedRoads[carOption]->checkCarFit(car)) {           
-            removeCar();
-            connectedRoads[carOption]->recieveCar(car);
+         const auto carOption = car.getOption();
 
-            cars.forEach(std::bind(cars.front()->move));
-         }
-
-         logger.addLog(CAR_BLOCKED);
+         try
+         {
+            if (connectedRoads[carOption]->recieveCar(&car))
+               removeCar();
+            
+         }catch(...)
+         {
+            logger.addLog(CAR_BLOCKED);
+         }         
       }     
    }
    catch (...)
@@ -25,10 +27,9 @@ void Road::moveCars()
 Road::Road(const int _vel, const int _length, const int timer) :
    velocity(_vel),
    length(_length),
-   capacity(_length),
    semaphore(new Semaphore(timer)),
    logger(Logger()),   
-   cars(LinkedQueue<Car*>()),
+   cars(_length),
    connectedRoads(Lista<Road*>(3))
 {}
 
@@ -45,27 +46,35 @@ void Road::connectRoads(const RoadPercent r1, const RoadPercent r2, const RoadPe
 }
 
 bool Road::recieveCar(Car* car)
-{  
-   cars.enqueue(car);
-   capacity -= car->getLength();
+{
+   try
+   {
+      cars.enqueue(*car);
 
-   car->setSpeed(velocity);
+      car->setSpeed(velocity);
 
-   logger.addLog(CAR_ENTRY);
-   return false;
+      logger.addLog(CAR_ENTRY);
+      return true;
+   }
+   catch (...)
+   {
+      return false;
+   }
+   
 }
 
 bool Road::removeCar()
 {
-   capacity += cars.dequeue()->getLength();
-   
-   logger.addLog(CAR_LEFT);
-   return false;   
-}
-
-bool Road::checkCarFit(Car* car) const
-{
-   return capacity >= car->getLength();  
+   try
+   {
+      cars.dequeue();   
+      logger.addLog(CAR_LEFT);
+      return true;
+   }
+   catch (...)
+   {
+      return false;
+   }   
 }
 
 

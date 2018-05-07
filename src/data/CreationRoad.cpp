@@ -2,17 +2,26 @@
 #include "CreationRoad.h"
 #include "Car.h"
 
-Car* CreationRoad::createCar()
+void CreationRoad::createCar()
 {
-   recieveCar(new Car(velocity));
-   logger.addLog(CAR_CREATED);
+   if ( cars.getCapacity() >= 8) {
+      recieveCar(new Car(velocity));
+      logger.addLog(CAR_CREATED);
+   }
+   else
+      logger.addLog(CAR_BLOCKED);
 }
 
 void CreationRoad::getNotify(const int time)
 {
-   if (frequence % time == 0)
-      createCar();
    if (semaphore->getTimer() % time == 0)
       semaphore->changeState();
+   
+   if (semaphore->isOpen())
+      moveCars();
+
+   if (frequence % time == 0)
+      createCar();
+
 
 }

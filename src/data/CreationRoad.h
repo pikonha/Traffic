@@ -8,7 +8,7 @@ class CreationRoad : public Road
 {
    int frequence;
 
-   Car* createCar();
+   void createCar();
 public:
    ~CreationRoad() = default;
 

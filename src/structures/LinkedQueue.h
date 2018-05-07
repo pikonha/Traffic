@@ -2,10 +2,13 @@
 #ifndef INCLUDED_LINKEDQUEUE_H
 #define INCLUDED_LINKEDQUEUE_H
 
+#include <stdexcept>
+
 template<typename T>
 class LinkedQueue
 {
-   class Node {  // Elemento
+protected:
+   class Node { 
    public:
       explicit Node(const T& data) : data_{ data }
       {}
@@ -45,21 +48,19 @@ class LinkedQueue
    std::size_t size_;
 
 public:
-   ~LinkedQueue();
+   virtual ~LinkedQueue();
    LinkedQueue();
-   
-   void clear();
-   void enqueue(const T& data);
 
-   T dequeue();
+   virtual void clear();
+   virtual void enqueue(const T& data);
+
+   virtual T dequeue();
    T& front() const;
    T& back() const;
 
    bool empty() const;
 
    std::size_t size() const;
-
-   void forEach(std::function<void(T)> func);
 };
 
 template<typename T>
@@ -103,19 +104,16 @@ T LinkedQueue<T>::dequeue()
    if (empty())
       throw std::out_of_range("LIST IS EMPTY!");
 
-   if (size_ == 1) {
-      T temp= head->data();
-      head= nullptr;
-      tail= nullptr;
-      size_--;
-      return temp;
-   }
-   Node* current= head;
-   T temp= current->data();
-   head= current->next();
-   delete current;
+   auto temp = head;
+   while (temp->next() != tail)
+      temp = temp->next();
+
+   auto aux = temp->next()->data();
+   temp->next(nullptr);
+
    size_--;
-   return temp;
+
+   return aux;
 }
 
 template<typename T>
@@ -146,16 +144,5 @@ std::size_t LinkedQueue<T>::size() const
    return size_;
 }
 
-template <typename T>
-void LinkedQueue<T>::forEach(std::function<void(T)> func)
-{
-   auto temp = head;
-
-   for (int i = 0; i < size_; i++)
-   {
-      func(temp);
-      temp = temp->next_;
-   }
-}
 
 #endif // !INCLUDED_LINKEDQUEUE_H

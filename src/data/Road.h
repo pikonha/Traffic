@@ -3,9 +3,8 @@
 
 #pragma once
 
-#include <functional>
 #include "Semaphore.h"
-#include "LinkedQueue.h"
+#include "CarQueue.h"
 #include "Lista.h"
 #include "Logger.h"
 
@@ -16,20 +15,17 @@ class Road
 protected:
    int velocity;
    int length;
-   int capacity;
 
    Semaphore* semaphore;
 
    Logger logger;
 
-   LinkedQueue<Car*> cars;
+   CarQueue cars;
    Lista<Road*> connectedRoads;
 
    void moveCars();
    bool removeCar();
    bool recieveCar(Car* car);  
-
-   bool checkCarFit(Car* car) const;
 public:
    virtual ~Road() { delete semaphore; }
    Road(const int _vel, const int _length, const int timer);
@@ -52,7 +48,7 @@ public:
 
    virtual void getNotify(const int time) = 0;
 
-   int getCapacity() const { return capacity; }
+   int getCapacity() const { return cars.getCapacity(); }
    Logger getLogger() const { return logger; }
 
 };

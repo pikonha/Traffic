@@ -4,6 +4,7 @@ SET	(
 	DATA_SRC
 	Car.cpp
 	Car.h
+	CarQueue.h 
 	Clock.cpp
 	Clock.h
 	CreationRoad.cpp
