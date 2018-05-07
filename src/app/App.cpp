@@ -78,12 +78,13 @@ void App::notifyAll(const int time) const
    userIO->printEventPartition(std::to_string(time));
 
    for (int i = 0; i < roads.getSize(); i++) {
-      roads[i]->getNotify(time);
-      userIO->addLog(roads[i]->getLogger());
-      userIO->printLogs(roads[i]->getName(), roads[i]->getLogger());
-
+      auto road = roads[i];
+      road->getNotify(time);
+      userIO->addLog(road->getLogger());
+      userIO->printLogs(road->getName(), road->getLogger());
    }
 
+   userIO->printTotalLogs();
    
 }
 
