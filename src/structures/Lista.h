@@ -1,5 +1,4 @@
 #pragma once
-
 #ifndef INCLUDED_LISTA_H
 #define INCLUDED_LISTA_H
 
@@ -11,11 +10,11 @@ class Lista
    T * contents;
 
    int size;
-   int capacity;
+   int maxSize;
 
 public:
    virtual ~Lista();
-   Lista(int _capacity);
+   Lista(int _maxSize);
 
    void push_back(const T& data);
    void push_front(const T& data);
@@ -34,7 +33,7 @@ public:
    int find(const T& data) const;
 
    int getSize() const { return size; }
-   int getCapacity() const { return capacity; }
+   int getCapacity() const { return maxSize; }
 
    T& operator[](int index) const;
 };
@@ -46,11 +45,11 @@ Lista<T>::~Lista()
 }
 
 template <class T>
-Lista<T>::Lista(int _capacity)
+Lista<T>::Lista(int _maxSize)
 {
    size = 0;
-   capacity = _capacity;
-   contents = new T[capacity];
+   maxSize = _maxSize;
+   contents = new T[maxSize];
 }
 
 /* Throws std::overflow_error */
@@ -106,7 +105,7 @@ T Lista<T>::pop_front()
    if (empty())
       throw std::underflow_error("Lista vazia");
    auto data = contents[0];
-   for (int i = 1; i < capacity; i++)
+   for (int i = 1; i < maxSize; i++)
       contents[i - 1] = contents[i];
    size--;
    return data;
@@ -125,7 +124,7 @@ void Lista<T>::remove(const T& data)
    const int index = find(data);
    if (index > -1) {
       contents[index] = 0;
-      for (int i = index; i < capacity; i++)
+      for (int i = index; i < maxSize; i++)
          contents[i - 1] = 1;
       size--;
    }
@@ -139,7 +138,7 @@ bool Lista<T>::empty() const
 
 template<class T>
 bool Lista<T>::full() const {
-   return size == capacity;
+   return size == maxSize;
 }
 
 

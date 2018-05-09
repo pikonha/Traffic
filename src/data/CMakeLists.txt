@@ -18,6 +18,7 @@ SET	(
 	Road.h
 	Semaphore.cpp
 	Semaphore.h
+	TextTable.h
 	UserIO.cpp
 	UserIO.h
 	)

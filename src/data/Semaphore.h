@@ -1,7 +1,6 @@
+#pragma once
 #ifndef INCLUDED_SEMAPHORE_H
 #define INCLUDED_SEMAPHORE_H
-
-#pragma once
 
 enum State
 {

@@ -10,20 +10,31 @@ void DestroyerRoad::deleteCar()
 
 void DestroyerRoad::checkFirstCar()
 {
+   if (cars.empty()) return;
+
    if (cars.front().getWalked() >= length)
       deleteCar();
 }
 
+void DestroyerRoad::moveCars()
+{ 
+   checkFirstCar();
+
+   try
+   {
+      if (cars.front().getWalked() < length)
+         cars.moveCars();
+   }
+   catch(...) {}
+   
+}
+
 void DestroyerRoad::getNotify(const int time)
 {
-   if (semaphore->getTimer() <= time)
+   if (time % semaphore->getTimer() == 0)
       semaphore->changeState();
 
-   if (semaphore->isOpen())
-   {
-      checkFirstCar();
-      moveCars();
-   }
+   moveCars();   
      
 }
 

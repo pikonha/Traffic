@@ -11,5 +11,5 @@ Car::Car(const int _speed) : speed(_speed)
 
 void Car::move()
 {
-   walked += (speed / 3.6) * 300;
+   walked += (speed / 3.6);
 }

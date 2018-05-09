@@ -14,12 +14,12 @@ void CreationRoad::createCar()
 
 void CreationRoad::getNotify(const int time)
 {
-   if (semaphore->getTimer() <= time)
+   if (time % semaphore->getTimer() == 0)
       semaphore->changeState();
    
-   if (semaphore->isOpen())
-      moveCars();
-
-   if (frequence % time == 0)
+   if (time % frequence == 0)
       createCar();
+
+   moveCars();
+
 }

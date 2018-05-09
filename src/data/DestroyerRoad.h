@@ -1,7 +1,7 @@
+#pragma once
 #ifndef INCLUDED_DESTROYERROAD_H
 #define INCLUDED_DESTROYERROAD_H
 
-#pragma once
 #include "Road.h"
 
 class DestroyerRoad : public Road
@@ -18,6 +18,7 @@ public:
       Road(_name, _vel, _length, semaphoreTimer)
    {}  
 
+   void moveCars() override;
    
    void getNotify(const int time) override;
 };

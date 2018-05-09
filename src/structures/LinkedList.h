@@ -1,6 +1,4 @@
-// Copyright 2018
 #pragma once
-
 #ifndef STRUCTURES_LINKED_LIST_H
 #define STRUCTURES_LINKED_LIST_H
 

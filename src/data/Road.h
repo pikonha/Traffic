@@ -1,7 +1,6 @@
+#pragma once
 #ifndef INCLUDED_ROAD_H
 #define INCLUDED_ROAD_H
-
-#pragma once
 
 #include "Semaphore.h"
 #include "CarQueue.h"
@@ -24,7 +23,7 @@ protected:
    CarQueue cars;
    Lista<Road*> connectedRoads;
 
-   void moveCars();
+   virtual void moveCars();
    bool removeCar();
    bool recieveCar(Car* car);  
 public:

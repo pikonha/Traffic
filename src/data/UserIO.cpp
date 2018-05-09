@@ -1,32 +1,48 @@
 #include "UserIO.h"
-#include <iostream>
+
+void UserIO::buildTable()
+{
+   table.setAlignment(2, TextTable::Alignment::LEFT);
+
+   table.add("");
+   table.add("Entry");
+   table.add("Left");
+   table.add("Created");
+   table.add("Deleted");
+   table.add("Blocked");
+   table.endOfRow();
+}
 
 void UserIO::printEventPartition(const std::string time)
 {
    system("cls");
-   std::cout << "\n-----------------------------" << time << "-----------------------------\n";
+   std::cout << "---------------" << time << "---------------\n";
+   buildTable();
 }
 
-void UserIO::printLogs(const std::string name, const Logger log) const
+void UserIO::addLogToTable(const std::string name, const Logger log)
 {
-   std::cout << "-------------------------------------------------" << std::endl;
-   std::cout << "Road " << name << ":" << std::endl;
-   std::cout << "Entry: " << log.getEntry() << std::endl;
-   std::cout << "Left: " << log.getLeft() << std::endl;
-   std::cout << "Created: " << log.getCreated() << std::endl;
-   std::cout << "Deleted: " << log.getDeleted() << std::endl;
-   std::cout << "Blocked: " << log.getBlocked() << std::endl;
-   std::cout << "-------------------------------------------------" << std::endl;
+   table.add(name);
+   table.add(std::to_string(log.getEntry()));
+   table.add(std::to_string(log.getLeft()));
+   table.add(std::to_string(log.getCreated()));
+   table.add(std::to_string(log.getDeleted()));
+   table.add(std::to_string(log.getBlocked()));
+   table.endOfRow();
 }
 
-void UserIO::printTotalLogs() const
+void UserIO::printTotalLogs()
 {
-   std::cout << "\n-----------------------------" << "TOTAL" << "-----------------------------\n";
-   std::cout << "Entry: " << entry << std::endl;
-   std::cout << "Left: " << left << std::endl;
-   std::cout << "Created: " << created << std::endl;
-   std::cout << "Deleted: " << deleted << std::endl;
-   std::cout << "Blocked: " << blocked << std::endl;
+   table.add("TOTAL");
+   table.add(std::to_string(entry));
+   table.add(std::to_string(left));
+   table.add(std::to_string(created));
+   table.add(std::to_string(deleted));
+   table.add(std::to_string(blocked));   
+
+   std::cout << table;
+
+   table = TextTable();
 }
 
 void UserIO::addLog(const Logger log)

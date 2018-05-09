@@ -5,7 +5,7 @@ void Road::moveCars()
 {
    try {
       auto car = cars.front();
-      if (car.getWalked() >= length)
+      if (car.getWalked() >= length && semaphore->isOpen())
       {
          const auto carOption = car.getOption();
 
@@ -13,12 +13,15 @@ void Road::moveCars()
          {
             if (connectedRoads[carOption]->recieveCar(&car))
                removeCar();
-            
-         }catch(...)
+
+         }
+         catch (...)
          {
             logger.addLog(CAR_BLOCKED);
-         }         
-      }     
+         }
+      }
+      else
+         cars.moveCars();
    }
    catch (...)
    {}      
@@ -31,7 +34,7 @@ Road::Road(const std::string _name, const int _vel, const int _length, const int
    semaphore(new Semaphore(timer)),
    logger(Logger()),   
    cars(_length),
-   connectedRoads(Lista<Road*>(3))
+   connectedRoads(Lista<Road*>(10))
 {}
 
 void Road::connectRoads(const RoadPercent r1, const RoadPercent r2, const RoadPercent r3)

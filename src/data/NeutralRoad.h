@@ -1,7 +1,6 @@
+#pragma once
 #ifndef INCLUDED_NEUTRALROAD_H
 #define INCLUDED_NEUTRALROAD_H
-
-#pragma once
 
 #include "Road.h"
 

@@ -1,48 +1,45 @@
-
 #include "Clock.h"
 #include <thread>
 #include <time.h>
 
-Clock::Clock(App& _owner, const double _execTime) : owner(_owner)
+#include <cstdlib> //_sleep()
+
+
+void Clock::startClock(const int execTime)
 {
-   time(&currentTime);
-   startTime = currentTime;
+   time_t currentTime = time(NULL);
+   const long int limit = currentTime + execTime;
 
-   limit = startTime + _execTime;
-
-   startClock((_execTime * 5) / 100);
-}
-
-
-void Clock::startClock(const double period)
-{
    while (currentTime <= limit)
    {
-      currentTime = startTime + difftime(currentTime, startTime) * /*period*/ 300; 
+      const clock_t init = clock();
+      notifyAll(currentTime);
+      oneSec(init);
 
-      owner.notifyAll(currentTime);
-      time(&currentTime);
-
-      oneSec();
+      currentTime = time(NULL);     
    }
 }
 
-std::string Clock::getCurrentTimeFormated()
+std::string Clock::timeView(const time_t time)
 {
    char buffer[80];
 
    struct tm timeinfo;
 
-   localtime_s(&timeinfo, &currentTime);
+   localtime_s(&timeinfo, &time);
 
-   strftime(buffer, 80, "Current date: %H:%M %d/%m/%y", &timeinfo);
+   strftime(buffer, 80, "%H:%M %d/%m/%y", &timeinfo);
 
    return std::string(buffer);
 }
 
-void Clock::oneSec() const
+void Clock::oneSec(const clock_t init) const
 {   
-    using namespace std::literals::chrono_literals;
+   // ReSharper disable CppDeprecatedEntity
+   _sleep(1000 - (clock() - init));
+   // ReSharper restore CppDeprecatedEntity
 
-    std::this_thread::sleep_for(1s);
+    //using namespace std::literals::chrono_literals;
+
+    //std::this_thread::sleep_for(1s);
 }

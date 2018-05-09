@@ -1,7 +1,7 @@
+#pragma once
 #ifndef INCLUDED_CREATIONROAD_H
 #define INCLUDED_CREATIONROAD_H
 
-#pragma once
 #include "Road.h"
 
 class CreationRoad : public Road

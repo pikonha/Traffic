@@ -3,9 +3,8 @@
 
 void NeutralRoad::getNotify(const int time)
 {   
-   if (semaphore->getTimer() <= time )
+   if (time % semaphore->getTimer() == 0)
       semaphore->changeState();   
 
-   if (semaphore->isOpen())
-      moveCars();
+   moveCars();
 }

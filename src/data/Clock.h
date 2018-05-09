@@ -1,32 +1,25 @@
 #pragma once
-
 #ifndef INCLUDED_CLOCK_H
 #define INCLUDED_CLOCK_H
 
 #include <string>
-#include "../app/App.h"
+#include <functional>
+#include <ctime>
 
 class Clock
 {
-   App& owner;
-
-   time_t limit;
-   time_t startTime;
-   time_t currentTime;
-
-   //std::function<void(int)> notifyAll;
-
+   std::function<void(int)> notifyAll;
 public:
    ~Clock() = default;
-   Clock(App& _owner, const double _execTime);
+   Clock() {}
 
-   void startClock(const double period);
+   void startClock(const int execTime);
 
-   std::string getCurrentTimeFormated();
+   std::string timeView(const time_t time);
 
-   void oneSec() const;
+   void oneSec(const clock_t init) const;
 
-   //void connectNotify(std::function<void(int)> _notify) { notifyAll = _notify; }
+   void connectNotify(std::function<void(int)> _notify) { notifyAll = _notify; }
 };
 
 #endif

@@ -1,5 +1,4 @@
 #pragma once
-
 #ifndef INCLUDED_LOGGER_H
 #define INCLUDED_LOGGER_H
 
