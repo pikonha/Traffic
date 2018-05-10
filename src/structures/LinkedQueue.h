@@ -10,27 +10,16 @@ class LinkedQueue
 protected:
    class Node { 
    public:
-      explicit Node(const T& data) : data_{ data }
+      Node(const T& data, Node* next=nullptr) :
+         data_( data ),
+         next_( next )
       {}
 
-      Node(const T& data, Node* next) :
-         data_{ data },
-         next_{ next }
-      {}
-
-      T& data() {  
-         return data_;
-      }
-
-      const T& data() const {  
+      T data() {  
          return data_;
       }
 
       Node* next() {  
-         return next_;
-      }
-
-      const Node* next() const {  
          return next_;
       }
 
@@ -40,7 +29,7 @@ protected:
 
    private:
       T data_;
-      Node* next_{ nullptr };
+      Node* next_;
    };
 
    Node* head;
@@ -55,8 +44,8 @@ public:
    virtual void enqueue(const T& data);
 
    virtual T dequeue();
-   T& front() const;
-   T& back() const;
+   T front() const;
+   T back() const;
 
    bool empty() const;
 
@@ -86,15 +75,10 @@ void LinkedQueue<T>::clear()
 template<typename T>
 void LinkedQueue<T>::enqueue(const T & data)
 {
-   if (empty()) {
-      head= new Node(data);
-      tail= head;
-   } 
-   else {
-      auto new_node= new Node(data);
-      tail->next(new_node);
-      tail= new_node;
-   }
+   if (empty()) 
+      tail = head= new Node(data);   
+   else 
+      tail = new Node(data,tail);
    size_++;
 }
 
@@ -104,20 +88,24 @@ T LinkedQueue<T>::dequeue()
    if (empty())
       throw std::out_of_range("LIST IS EMPTY!");
 
-   auto temp = head;
-   while (temp->next() != tail)
-      temp = temp->next();
+   auto aux = head->data();
+   if (size_ == 1)
+      head = tail = nullptr;
+   else {
+      auto temp = tail;
+      while (temp->next() != head)
+         temp = temp->next();
 
-   auto aux = temp->next()->data();
-   temp->next(nullptr);
-
+      aux = temp->next()->data();
+      temp->next(nullptr);
+   }
    size_--;
 
    return aux;
 }
 
 template<typename T>
-T &LinkedQueue<T>::front() const
+T LinkedQueue<T>::front() const
 {
    if (empty())
       throw std::out_of_range("LIST IS EMPTY!");
@@ -125,7 +113,7 @@ T &LinkedQueue<T>::front() const
 }
 
 template<typename T>
- T &LinkedQueue<T>::back() const
+ T LinkedQueue<T>::back() const
 {
    if (empty())
       throw std::out_of_range("LIST IS EMPTY!");

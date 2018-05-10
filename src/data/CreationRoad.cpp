@@ -12,11 +12,9 @@ void CreationRoad::createCar()
       logger.addLog(CAR_BLOCKED);
 }
 
+
 void CreationRoad::getNotify(const int time)
 {
-   if (time % semaphore->getTimer() == 0)
-      semaphore->changeState();
-   
    if (time % frequence == 0)
       createCar();
 

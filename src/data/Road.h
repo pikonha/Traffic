@@ -16,7 +16,7 @@ protected:
    int velocity;
    int length;
 
-   Semaphore* semaphore;
+   Semaphore& semaphore;
 
    Logger logger;
 
@@ -27,8 +27,8 @@ protected:
    bool removeCar();
    bool recieveCar(Car* car);  
 public:
-   virtual ~Road() { delete semaphore; }
-   Road(const std::string _name, const int _vel, const int _length, const int timer);
+   virtual ~Road() {}
+   Road(const std::string _name, const int _vel, const int _length, Semaphore& _semaphore);
 
    //////////////////////////////////////////////////////////
    struct RoadPercent
@@ -46,7 +46,7 @@ public:
 
    void connectRoads(const RoadPercent, const RoadPercent, const RoadPercent);
 
-   virtual void getNotify(const int time) = 0;
+   virtual void getNotify(const int time);
 
    int getCapacity() const { return cars.getCapacity(); }
    Logger getLogger() const { return logger; }

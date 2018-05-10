@@ -12,11 +12,9 @@ public:
       const std::string _name,
       const int _vel,
       const int _length,
-      const int semaphoreTimer) :
-      Road(_name, _vel, _length, semaphoreTimer)
+      Semaphore& _semaphore ) :
+      Road(_name, _vel, _length, _semaphore)
    {}  
-
-   void getNotify(const int time) override;
 
 };
 

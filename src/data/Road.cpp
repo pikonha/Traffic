@@ -5,33 +5,35 @@ void Road::moveCars()
 {
    try {
       auto car = cars.front();
-      if (car.getWalked() >= length && semaphore->isOpen())
+      if (car->getWalked() >= length)
       {
-         const auto carOption = car.getOption();
+         if (semaphore.isOpen()) {
+            const auto carOption = car->getOption();
 
-         try
-         {
-            if (connectedRoads[carOption]->recieveCar(&car))
-               removeCar();
+            try
+            {
+               if (connectedRoads[carOption]->recieveCar(car))
+                  removeCar();
 
-         }
-         catch (...)
-         {
-            logger.addLog(CAR_BLOCKED);
+            }
+            catch (...)
+            {
+               logger.addLog(CAR_BLOCKED);
+            }
          }
       }
-      else
+      else if (car)
          cars.moveCars();
    }
    catch (...)
    {}      
 }
 
-Road::Road(const std::string _name, const int _vel, const int _length, const int timer) :
+Road::Road(const std::string _name, const int _vel, const int _length, Semaphore& _semaphore) :
    name(_name),
    velocity(_vel),
    length(_length),
-   semaphore(new Semaphore(timer)),
+   semaphore(_semaphore),
    logger(Logger()),   
    cars(_length),
    connectedRoads(Lista<Road*>(10))
@@ -49,11 +51,16 @@ void Road::connectRoads(const RoadPercent r1, const RoadPercent r2, const RoadPe
       connectedRoads.push_back(r3.road);
 }
 
+void Road::getNotify(const int time)
+{
+   moveCars();
+}
+
 bool Road::recieveCar(Car* car)
 {
    try
    {
-      cars.enqueue(*car);
+      cars.enqueue(car);
 
       car->setSpeed(velocity);
 

@@ -39,7 +39,4 @@ void Clock::oneSec(const clock_t init) const
    _sleep(1000 - (clock() - init));
    // ReSharper restore CppDeprecatedEntity
 
-    //using namespace std::literals::chrono_literals;
-
-    //std::this_thread::sleep_for(1s);
 }

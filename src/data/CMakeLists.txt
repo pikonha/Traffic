@@ -16,8 +16,8 @@ SET	(
 	NeutralRoad.h
 	Road.cpp
 	Road.h
-	Semaphore.cpp
 	Semaphore.h
+	SempahoreRingList.h
 	TextTable.h
 	UserIO.cpp
 	UserIO.h

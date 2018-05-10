@@ -19,7 +19,8 @@ public:
    int getTimer() const { return timer; }
    bool isOpen() const { return state == GREEN; }
    void changeState() { state == RED ? state = GREEN : state = RED; }
-   
+  
+   State getState() const { return state; }
 };
 
 #endif

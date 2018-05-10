@@ -6,6 +6,7 @@
 #include "UserIO.h"
 #include "Road.h"
 #include "Lista.h"
+#include "SempahoreRingList.h"
 
 class App
 {
@@ -13,13 +14,18 @@ class App
    UserIO* userIO;
 
    Lista<Road*> roads;
+   SemaphoreRingList semaphoreS1;
+   SemaphoreRingList semaphoreS2;
 
-   void createRoads(const int timer);
+   void createRoads();
+   void createSemaphores(const int timer);
+   
+   void checkSemaphoresTime();
 public:
    App();
    ~App();
 
-   void notifyAll(int time) const;
+   virtual void notifyAll(int time);
 
    void startApplication() const;
 };
