@@ -1,0 +1,4 @@
+﻿  UserIO.cpp
+c:\users\lucas\documents\traffic\src\data\TextTable.h(108): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\lucas\documents\traffic\src\data\TextTable.h(117): warning C4267: '=': conversion from 'size_t' to 'unsigned int', possible loss of data
+  data.vcxproj -> C:\Users\Lucas\Documents\Traffic\build\src\data\Debug\data.lib

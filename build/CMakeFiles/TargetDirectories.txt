@@ -1,0 +1,8 @@
+C:/Users/Lucas/Documents/Traffic/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Lucas/Documents/Traffic/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Lucas/Documents/Traffic/build/src/app/CMakeFiles/app.dir
+C:/Users/Lucas/Documents/Traffic/build/src/app/CMakeFiles/ALL_BUILD.dir
+C:/Users/Lucas/Documents/Traffic/build/src/data/CMakeFiles/data.dir
+C:/Users/Lucas/Documents/Traffic/build/src/data/CMakeFiles/ALL_BUILD.dir
+C:/Users/Lucas/Documents/Traffic/build/src/structures/CMakeFiles/struct.dir
+C:/Users/Lucas/Documents/Traffic/build/src/structures/CMakeFiles/ALL_BUILD.dir

@@ -1,0 +1,4 @@
+﻿  Building Custom Rule C:/Users/Lucas/Documents/Traffic/src/structures/CMakeLists.txt
+  CMake does not need to re-run because C:/Users/Lucas/Documents/Traffic/build/src/structures/CMakeFiles/generate.stamp is up-to-date.
+  just_compile.cpp
+  struct.vcxproj -> C:\Users\Lucas\Documents\Traffic\build\src\structures\Debug\struct.lib
