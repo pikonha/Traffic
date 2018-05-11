@@ -25,7 +25,7 @@ protected:
 
    virtual void moveCars();
    bool removeCar();
-   bool recieveCar(Car* car);  
+   bool recieveCar(Car* car, bool addLog = true);  
 public:
    virtual ~Road() {}
    Road(const std::string _name, const int _vel, const int _length, Semaphore& _semaphore);

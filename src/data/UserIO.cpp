@@ -39,10 +39,13 @@ void UserIO::printTotalLogs()
    table.add(std::to_string(created));
    table.add(std::to_string(deleted));
    table.add(std::to_string(blocked));   
+   table.endOfRow();
 
    std::cout << table;
 
    table = TextTable();
+
+   entry = left = created = deleted = blocked = 0;
 }
 
 void UserIO::addLog(const Logger log)

@@ -5,10 +5,10 @@
 #include <cstdlib> //_sleep()
 
 
-void Clock::startClock(const int execTime)
+void Clock::startClock()
 {
    time_t currentTime = time(NULL);
-   const long int limit = currentTime + execTime;
+   const time_t limit = currentTime + execTime;
 
    while (currentTime <= limit)
    {
@@ -16,7 +16,7 @@ void Clock::startClock(const int execTime)
       notifyAll(currentTime);
       oneSec(init);
 
-      currentTime = time(NULL);     
+      currentTime = time(NULL);
    }
 }
 

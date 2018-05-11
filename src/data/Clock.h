@@ -8,12 +8,14 @@
 
 class Clock
 {
+   time_t execTime;
+
    std::function<void(int)> notifyAll;
 public:
    ~Clock() = default;
-   Clock() {}
+   Clock(const int _execTime) : execTime(_execTime){}
 
-   void startClock(const int execTime);
+   void startClock();
 
    std::string timeView(const time_t time);
 

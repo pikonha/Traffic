@@ -4,7 +4,7 @@
 
 Car::Car(const int _speed) : speed(_speed)
 {
-   option = rand() % 11;
+   option = rand() % 10;
    length = rand() % 7 + 2;
    walked = 0;
 }

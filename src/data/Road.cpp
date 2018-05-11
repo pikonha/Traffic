@@ -56,7 +56,7 @@ void Road::getNotify(const int time)
    moveCars();
 }
 
-bool Road::recieveCar(Car* car)
+bool Road::recieveCar(Car* car, bool addLog)
 {
    try
    {
@@ -64,7 +64,8 @@ bool Road::recieveCar(Car* car)
 
       car->setSpeed(velocity);
 
-      logger.addLog(CAR_ENTRY);
+      if (addLog)
+         logger.addLog(CAR_ENTRY);
       return true;
    }
    catch (...)

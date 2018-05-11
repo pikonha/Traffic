@@ -5,7 +5,7 @@
 void CreationRoad::createCar()
 {
    if ( cars.getCapacity() >= 8) {
-      recieveCar(new Car(velocity));
+      recieveCar(new Car(velocity), false);
       logger.addLog(CAR_CREATED);
    }
    else

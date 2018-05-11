@@ -17,6 +17,8 @@ class App
    SemaphoreRingList semaphoreS1;
    SemaphoreRingList semaphoreS2;
 
+   void mockupTime(int& exec, int& semaphore);
+   
    void createRoads();
    void createSemaphores(const int timer);
    

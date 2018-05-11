@@ -41,6 +41,7 @@ public:
    int getDeleted() const { return carsDeleted; }
    int getBlocked() const { return carsBlocked; }
 
+   void reset() { carsEntry = carsLeft = carsCreated = carsDeleted = carsBlocked = 0; }
 };
 
 

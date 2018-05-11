@@ -3,6 +3,13 @@
 #include "CreationRoad.h"
 #include "NeutralRoad.h"
 
+void App::mockupTime(int& exec, int& semaphore)
+{
+   const auto percent = (100 * 20) / exec;
+   semaphore = (semaphore * percent) / 100;
+   //exec = (exec * percent) / 100;
+}
+
 void App::createRoads()
 {
    const auto o1west = new DestroyerRoad("O1west", 80, 2000, *semaphoreS1[3]);
@@ -75,12 +82,18 @@ void App::checkSemaphoresTime()
 
 App::App() : userIO(new UserIO()), roads(Lista<Road*>(14)), semaphoreS1(SemaphoreRingList()), semaphoreS2(SemaphoreRingList())
 {
-   clock = new Clock();
+   auto execTime = userIO->getExecTime();
+   auto semaphoreTime = userIO->getSemaphoreTime();
+
+   //mockupTime(execTime, semaphoreTime);
+
+   clock = new Clock(execTime);
    clock->connectNotify([this](int timeEllapsed)
    {
       notifyAll(timeEllapsed);
    });
-   createSemaphores(userIO->getSemaphoreTime());
+
+   createSemaphores(semaphoreTime);
    createRoads();
 }
 
@@ -104,6 +117,7 @@ void App::notifyAll(const int time)
       road->getNotify(time);
       userIO->addLog(road->getLogger());
       userIO->addLogToTable(road->getName(), road->getLogger());
+      road->getLogger().reset();
    }
 
    userIO->printTotalLogs();
@@ -111,6 +125,7 @@ void App::notifyAll(const int time)
 
 void App::startApplication() const
 {
-   clock->startClock(userIO->getExecTime());
+   clock->startClock();
+ 
 }
 
